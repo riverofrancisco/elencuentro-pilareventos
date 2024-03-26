@@ -4,12 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
-.env
 package-lock.json
 
 # testing
 /coverage
 
+# dotenv environment variables file
+.env
+.env.test
 
 # production
 /build

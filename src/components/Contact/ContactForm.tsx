@@ -36,6 +36,7 @@ const {
   REACT_APP_serviceID,
   REACT_APP_templateID,
   REACT_APP_privateKey,
+  REACT_APP_PRUEBA,
 } = process.env;
 
 export interface Contacts {
@@ -211,11 +212,13 @@ export default function ContactForm({ currentLanguage }: Props) {
           setCurrentData(emptyFormContent);
         },
         (error: EmailJSResponseStatus) => {
-          alert(`${
-            currentLanguage == "es"
-              ? "Error al enviar el mensaje."
-              : "Error sending the message."
-          }`);
+          alert(
+            `${
+              currentLanguage == "es"
+                ? "Error al enviar el mensaje."
+                : "Error sending the message."
+            }`
+          );
           console.log(`Error sending form: ${error}`);
         }
       );
