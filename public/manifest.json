@@ -1,0 +1,25 @@
+{
+  "short_name": "El Encuentro Pilar Eventos",
+  "name": "Powered by FREDI Services",
+  "icons": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLogoELEN.png?alt=media&token=041870e7-33b9-4ccf-aae8-59fb9a821188",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLogoELEN.png?alt=media&token=041870e7-33b9-4ccf-aae8-59fb9a821188",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLogoELEN.png?alt=media&token=041870e7-33b9-4ccf-aae8-59fb9a821188",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
