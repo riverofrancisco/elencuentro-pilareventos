@@ -45,6 +45,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           button:{
             primary: Colours.Verde,
             secondary: Colours.Crema,
+            info: Colours.Blanco
             
           },
           text: {

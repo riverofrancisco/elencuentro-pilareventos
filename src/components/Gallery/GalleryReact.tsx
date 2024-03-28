@@ -37,22 +37,38 @@ export default function InteractiveGallery({
     <Box
       sx={{
         display: openPicture ? "flex" : "none",
-        flexDirection: { xs: "column", lg: "row" },
+        flexDirection: { xs: "column", md: "row" },
         position: "fixed",
-        top: "50%",
-        left: "50%",
+        justifyContent: "center",
+        alignContent: "center",
+        top: 0,
+        left: 0,
         width: "100vw",
         height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: "rgba(0, 0, 0, 0.7)", // Fondo oscuro semi-transparente
-        transform: "translate(-50%, -50%)",
-        zIndex: openPicture ? 999 : -1,
+        zIndex: 999,
       }}
     >
       <Box
         sx={{
-          display: { xs: "flex", lg: "none" },
+          display: { xs: "none", md: "flex" },
+          position: "absolute",
+          id:"closeButton",
+          top: "3%",
+          left: "1%",
+          zIndex: 1000,
+          backgroundColor: "rgba(100, 100, 100, 0.7)",
+          borderRadius: 1.5,
+        }}
+      >
+        <Button onClick={() => setOpen(false)}>
+          <CloseIcon />
+        </Button>
+      </Box>
+
+      <Box
+        sx={{
+          display: { xs: "flex", md: "none" },
           justifyContent: "center",
           alignItems: "center",
           zIndex: -2,
@@ -62,26 +78,19 @@ export default function InteractiveGallery({
           <CloseIcon />
         </Button>
       </Box>
-      <ImageGallery
-        items={galleryPictures}
-        showBullets
-        thumbnailPosition="right"
-        startIndex={selectedItem}
-      />
       <Box
         sx={{
-          display: { xs: "none", lg: "flex" },
-          position: "relative",
-          height: "100%",
-          zIndex: -2,
+          display: "flex",
+          justifySelf: "center",
+          alignSelf: "center",
         }}
       >
-        <Button
-          sx={{ position: "absolute", m: 1, top: 0, left: 0 }}
-          onClick={() => setOpen(false)}
-        >
-          <CloseIcon />
-        </Button>
+        <ImageGallery
+          items={galleryPictures}
+          showBullets
+          thumbnailPosition="right"
+          startIndex={selectedItem}
+        />{" "}
       </Box>
     </Box>
   );
