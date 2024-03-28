@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooksRedux";
 //import { emptySkill } from "../../interfaces/interfaces";
 //import { deleteSkill } from "../../middlewares/skills/delete";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Colours } from "../../Theme/theme";
 //import { skillsUpdater } from "../../redux/portfolio/actions";
 //import { MenuOptionsSkill } from "../Actions/MenuOptions";
 
@@ -41,8 +42,8 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
       justifyContent="space-around"
       sx={{
         width: { xs: "49%", sm: "33%" },
-        border: "2px solid black",
-        bgcolor: "black",
+      p:0.5,
+        bgcolor: Colours.Beige2,
         opacity: 1,
         transition: "opacity 0.3s ease-in-out",
         "&:hover": {

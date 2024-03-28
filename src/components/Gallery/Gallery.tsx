@@ -14,6 +14,7 @@ import {
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import InteractiveGallery from "./GalleryReact";
 import { galleryPictures } from "../../draftData/data";
+import { Colours } from "../../Theme/theme";
 
 const itemData = [
   {
@@ -147,7 +148,7 @@ export default function Gallery() {
       <Box
         sx={{
           display: "flex",
-          bgcolor: "black",
+          bgcolor: Colours.Beige2,
           justifyContent: "center",
           width: { xs: "90%", sm: "80%", md: "75%" },
           flexWrap: "wrap",
