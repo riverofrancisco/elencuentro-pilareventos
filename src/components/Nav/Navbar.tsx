@@ -301,7 +301,7 @@ export default function NavBar() {
                 ))}
               </Box>
               <Box display="flex">
-                <IconButton
+                {/* <IconButton
                   color="inherit"
                   onClick={handleToggleDarkMode}
                   sx={{
@@ -310,12 +310,12 @@ export default function NavBar() {
                     p: 1,
                   }}
                 >
-                  {/*  {isDarkMode ? (
+                  {isDarkMode ? (
                     <LightModeRoundedIcon />
                   ) : (
                     <DarkModeRoundedIcon />
-                  )} */}
-                </IconButton>
+                  )} 
+                </IconButton> */}
                 <LanguageButton />
                 {isAuth ? (
                   <Box sx={{ display: { xs: "none", md: "flex" } }}>
