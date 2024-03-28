@@ -6,6 +6,7 @@ import { Colours } from "../../Theme/theme";
 export default function About() {
   const currentLanguage = useAppSelector((state) => state.global.language);
   const [id, setId] = React.useState("Sobre Nosotros");
+ // const title = id.split("-")[0] + " " + id.split("-")[1] 
 
   React.useEffect(() => {
     if (currentLanguage === "en") {

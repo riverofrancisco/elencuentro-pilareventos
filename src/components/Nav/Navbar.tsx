@@ -32,6 +32,7 @@ import ElevationScroll from "./NavbarEffect";
 import { Colours } from "../../Theme/theme";
 import LOGOLIGHT from "../../draftData/Images/LogoELEN Light.png";
 import LOGO from "../../draftData/Images/LogoELEN.png";
+import { idText } from "typescript";
 
 //// PROGRESS BAR
 const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -114,6 +115,8 @@ export default function NavBar() {
 
   ////SCROLLING WITH CLICK
   function scrollToTextField(id: string) {
+    console.log(id)
+    console.log(typeof id)
     if (mobileOpen) setMobileOpen(false);
     const element = document.getElementById(id);
     if (element) {
@@ -153,7 +156,7 @@ export default function NavBar() {
     handleItems();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [Items]);
+  }, [currentLanguage]);
 
   return (
     <Box display="flex" width="100%" flexDirection="column">
