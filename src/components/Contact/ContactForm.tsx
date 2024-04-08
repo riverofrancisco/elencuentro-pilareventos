@@ -3,41 +3,28 @@ import {
   Button,
   Fade,
   Typography,
-  InputAdornment,
   Paper,
   TextField,
-  Checkbox,
   Grid,
   Box,
   Autocomplete,
-  AccordionDetails,
-  AccordionSummary,
-  Accordion,
 } from "@mui/material";
 
 //ICONS
 import SendIcon from "@mui/icons-material/Send";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EmailIcon from "@mui/icons-material/Email";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 //FUNCTIONALITY
 import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
-import Swal from "sweetalert2";
 import Alert from "@mui/material/Alert";
-import { useAppSelector } from "../../hooks/hooksRedux";
-import { FormContent, emptyFormContent } from "../../interfaces/interfaces";
+import { emptyFormContent } from "../../interfaces/interfaces";
 import { Colours } from "../../Theme/theme";
 import { current } from "@reduxjs/toolkit";
 
-const {
-  REACT_APP_publicKey,
-  REACT_APP_serviceID,
-  REACT_APP_templateID,
-  REACT_APP_privateKey,
-  REACT_APP_PRUEBA,
-} = process.env;
+const { REACT_APP_publicKey, REACT_APP_serviceID, REACT_APP_templateID } =
+  process.env;
 
 export interface Contacts {
   name: string;
@@ -51,11 +38,7 @@ interface Props {
 
 export default function ContactForm({ currentLanguage }: Props) {
   const defaultType = {
-    options: [
-      "Propuesta integral",
-      "Alquiler espacio",
-      "Alquiler espacio y ambientación",
-    ],
+    options: ["Alquiler espacio"],
     getOptionLabel: (option: any) => option,
   };
 
@@ -76,36 +59,16 @@ export default function ContactForm({ currentLanguage }: Props) {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = event.target;
+    const { name, value } = event.target;
     if (name.includes(".")) {
       const [parentProperty, childProperty] = name.split(".");
-      if (childProperty == "flex") {
-        //Funcionalidad de Fecha flexible
-        setCurrentData((currentData: any) => ({
-          ...currentData,
-          [parentProperty]: {
-            ...currentData[parentProperty],
-            [childProperty]: checked,
-          },
-        }));
-        if (currentData.date.date !== "" && !currentData.date.flex) {
-          setCurrentData((currentData: any) => ({
-            ...currentData,
-            date: {
-              flex: checked,
-              date: "",
-            },
-          }));
-        }
-      } else {
-        setCurrentData((currentData: any) => ({
-          ...currentData,
-          [parentProperty]: {
-            ...currentData[parentProperty],
-            [childProperty]: value,
-          },
-        }));
-      }
+      setCurrentData((currentData: any) => ({
+        ...currentData,
+        [parentProperty]: {
+          ...currentData[parentProperty],
+          [childProperty]: value,
+        },
+      }));
     } else {
       setCurrentData({
         ...currentData,
@@ -188,9 +151,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         message: `${currentData.comments}`,
         client_name: `${currentData.host.name}`,
         event_type: `${currentData.type}`,
-        event_date: `${
-          currentData.date.flex ? "Flexible" : currentData.date.date
-        }`,
+        event_date: `${currentData.date}`,
         event_guests: `${currentData.guests}`,
         client_lastname: `${currentData.host.lastName}`,
         client_email: `${currentData.host.email}`,
@@ -200,7 +161,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         (response: EmailJSResponseStatus) => {
           alert(
             `${
-              currentLanguage == "es"
+              currentLanguage === "es"
                 ? "¡Mensaje enviado correctamente!"
                 : "Message sent successfully!"
             }`
@@ -214,7 +175,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         (error: EmailJSResponseStatus) => {
           alert(
             `${
-              currentLanguage == "es"
+              currentLanguage === "es"
                 ? "Error al enviar el mensaje."
                 : "Error sending the message."
             }`
@@ -256,7 +217,7 @@ export default function ContactForm({ currentLanguage }: Props) {
           }}
         >
           <Typography variant="h6">
-            {currentLanguage == "es" ? "Sobre el Evento" : "Event Info"}
+            {currentLanguage === "es" ? "Sobre el Evento" : "Event Info"}
           </Typography>
           <Box
             sx={{
@@ -274,7 +235,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 <TextField
                   {...params}
                   label={
-                    currentLanguage == "es" ? "Tipo de Evento" : "Event Type"
+                    currentLanguage === "es" ? "Tipo de Evento" : "Event Type"
                   }
                   name="type"
                   variant="outlined"
@@ -288,7 +249,8 @@ export default function ContactForm({ currentLanguage }: Props) {
             sx={{
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
-              alignItems: "center",
+              alignItems: { xs: "center" },
+              justifyContent: { xs: "center", sm: "space-between" },
               width: "100%",
               my: 1.5,
             }}
@@ -298,12 +260,13 @@ export default function ContactForm({ currentLanguage }: Props) {
                 display: "flex",
                 alignItems: "center",
                 width: { xs: "100%", sm: "45%" },
+                justifyContent: { xs: "center", sm: "left" },
                 mb: { xs: 1.5, sm: 0 },
               }}
             >
               <TextField
                 label={
-                  currentLanguage == "es"
+                  currentLanguage === "es"
                     ? "Cantidad de Invitados"
                     : "Amount of Guests"
                 }
@@ -316,7 +279,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 size="small"
                 InputProps={{
                   inputProps: {
-                    min: 1,
+                    min: 2,
                     max: 501,
                   },
                 }}
@@ -325,7 +288,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 helperText={
                   !validNumber &&
                   `${
-                    currentLanguage == "es"
+                    currentLanguage === "es"
                       ? "Selecciona un numero entre 2 y 500"
                       : "Please choose a number between 2 and 500."
                   }`
@@ -333,58 +296,38 @@ export default function ContactForm({ currentLanguage }: Props) {
                 required
               />{" "}
             </Box>
-            <Box sx={{ display: "flex" }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
-                  px: 1,
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", sm: "right" },
+                width: "100%",
+              }}
+            >
+              <TextField
+                type="date"
+                name="date"
+                value={currentData.date}
+                onChange={handleChange}
+                variant="outlined"
+                sx={{ width: "97%" }}
+                size="small"
+                InputProps={{
+                  inputProps: {
+                    min: new Date().toISOString().split("T")[0],
+                    max: "2025-12-31",
+                  },
                 }}
-              >
-                <Typography>
-                  {currentLanguage == "es"
-                    ? "¿Fecha Flexible?"
-                    : "Flexible Date?"}
-                </Typography>
-                <Checkbox
-                  checked={currentData.date.flex}
-                  name="date.flex"
-                  onChange={handleChange}
-                  size="small"
-                  required
-                />{" "}
-              </Box>
-              <Box
-                sx={{ display: "flex", alignItems: "center", width: "100%" }}
-              >
-                <TextField
-                  type="date"
-                  name="date.date"
-                  disabled={currentData.date.flex}
-                  value={currentData.date.date}
-                  onChange={handleChange}
-                  variant="outlined"
-                  sx={{ width: "97%" }}
-                  size="small"
-                  InputProps={{
-                    inputProps: {
-                      min: new Date().toISOString().split("T")[0],
-                      max: "2025-12-31",
-                    },
-                  }}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  required
-                />{" "}
-              </Box>
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                required
+              />{" "}
             </Box>
           </Box>
           <Box my={1.5} sx={{ display: "flex", alignItems: "center" }}>
             <TextField
-              label={currentLanguage == "es" ? "Comentarios" : "Comments"}
+              label={currentLanguage === "es" ? "Comentarios" : "Comments"}
               type="text"
               multiline
               name="comments"
@@ -423,7 +366,7 @@ export default function ContactForm({ currentLanguage }: Props) {
           }}
         >
           <Typography variant="h6">
-            {currentLanguage == "es"
+            {currentLanguage === "es"
               ? "Información de Contacto"
               : "Contact Info"}
           </Typography>
@@ -440,8 +383,8 @@ export default function ContactForm({ currentLanguage }: Props) {
                 display: "flex",
                 flexDirection: { xs: "column", sm: "row" },
                 width: "100%",
-
                 justifyContent: { sm: "space-between" },
+                my: 1,
               }}
             >
               <Box
@@ -452,7 +395,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 }}
               >
                 <TextField
-                  label={currentLanguage == "es" ? "Nombre" : "Name"}
+                  label={currentLanguage === "es" ? "Nombre" : "Name"}
                   type="text"
                   name="host.name"
                   value={currentData.host.name}
@@ -472,7 +415,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 }}
               >
                 <TextField
-                  label={currentLanguage == "es" ? "Apellido" : "Last Name"}
+                  label={currentLanguage === "es" ? "Apellido" : "Last Name"}
                   type="text"
                   name="host.lastName"
                   value={currentData.host.lastName}
@@ -506,14 +449,16 @@ export default function ContactForm({ currentLanguage }: Props) {
                 helperText={
                   !validEmail &&
                   `${
-                    currentLanguage == "es"
+                    currentLanguage === "es"
                       ? "Por favor ingresa una dirección de email válida"
                       : "Please enter a valid email"
                   }`
                 }
                 onBlur={validateEmail}
                 required
-                label={currentLanguage == "es" ? "Correo Electrónico" : "Email"}
+                label={
+                  currentLanguage === "es" ? "Correo Electrónico" : "Email"
+                }
                 variant="filled"
                 value={currentData.host.email}
                 sx={{ width: "100%" }}
@@ -536,7 +481,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               sx={{ display: "flex", alignItems: "center", width: "91%" }}
             >
               <TextField
-                label={currentLanguage == "es" ? "Teléfono" : "Phone"}
+                label={currentLanguage === "es" ? "Teléfono" : "Phone"}
                 type="text"
                 multiline
                 name="host.phone"
@@ -563,7 +508,7 @@ export default function ContactForm({ currentLanguage }: Props) {
             borderRadius: 2,
           }}
         >
-          {currentLanguage == "es" ? "Enviar Mensaje" : "Sent Message"}
+          {currentLanguage === "es" ? "Enviar Mensaje" : "Sent Message"}
         </Button>
         <Fade in={showAlert}>
           <Alert
@@ -575,111 +520,12 @@ export default function ContactForm({ currentLanguage }: Props) {
               borderRadius: 4,
             }}
           >{`${
-            currentLanguage == "es"
+            currentLanguage === "es"
               ? "¡Mensaje enviado correctamente!"
               : "Message sent successfully!"
           }`}</Alert>
         </Fade>
       </Grid>
-
-      {/*
-      <Grid
-        item
-        id="host_info"
-        xs={12}
-        md={6}
-        sx={{ borderRadius: 3, border: 0.5 }}
-      >
-         <Grid item display="flex" flexDirection="column">
-          <Box
-            display="flex"
-            alignItems="end"
-            justifyContent="space-between"
-            width="100%"
-          >
-           
-            <TextField
-              name="form_name"
-              required
-              id="name"
-              label="Name"
-              variant="standard"
-              sx={{ m: 1, width: "48%" }}
-              value={name}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setName(e.target.value)
-              }
-            />
-            <TextField
-              name="last_name"
-              required
-              id="lastName"
-              label="Last Name"
-              variant="standard"
-              sx={{ m: 1, width: "48%" }}
-              value={lastName}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setLastName(e.target.value)
-              }
-            />
-            <EmailIcon
-              sx={{ color: "action.active", my: validEmail ? 1.5 : 4 }}
-            />
-            <TextField
-              name="email"
-              required
-              error={!validEmail}
-              helperText={!validEmail && "Please enter a valid email"}
-              onBlur={validateEmail}
-              id="email"
-              label="Email"
-              variant="standard"
-              sx={{ m: 1, width: "100%" }}
-              value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setEmail(e.target.value)
-              }
-            />
-          </Box>
-        </Grid>
-      </Grid>
-      <Box display="flex" alignItems="end" width="100%">
-        <TextField
-          name="message"
-          required
-          id="message"
-          label="Message"
-          variant="filled"
-          multiline
-          rows={8}
-          sx={{ my: 1, width: "100%" }}
-          value={message}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setMessage(e.target.value)
-          }
-        />
-
-        <Button
-          type="submit"
-          variant="contained"
-          color="secondary"
-          endIcon={<SendIcon />}
-          disabled={!submiteable}
-          sx={{
-            my: 1,
-            width: "50%",
-            alignSelf: "center",
-            borderRadius: 4,
-          }}
-        >
-          <Typography variant="button">
-            {currentLanguage === "en" ? "Send Message" : "Enviar Mensaje"}
-          </Typography>
-        </Button>
-        <Fade in={showAlert}>
-          <Alert severity="success">Message sent successfully!</Alert>
-        </Fade>
-      </Box> */}
     </Grid>
   );
 }

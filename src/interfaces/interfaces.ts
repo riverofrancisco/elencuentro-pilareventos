@@ -14,15 +14,6 @@ export const emptyLanguages : Languages = {
     es: ""
 };
 
-export interface Date {
-    flex: boolean, 
-    date: string, 
-}
-
-export const emptyDate = {
-    flex: false,
-    date: ""
-}
 
 export interface PersonalInfo {
     name: string, 
@@ -42,15 +33,15 @@ export const emptyPersonalInfo = {
 
 export interface FormContent {
     guests: number,
-    date: Date,
+    date: string,
     host: PersonalInfo, 
     type?: ["Propuesta integral", "Alquiler espacio", "Alquiler espacio y ambientación"]
     coments: string
 }
 
 export const emptyFormContent = {
-    guests: 2,
-    date: emptyDate,
+    guests: 0,
+    date: "",
     host: emptyPersonalInfo,
     type: "Alquiler espacio",
     comments: ""
