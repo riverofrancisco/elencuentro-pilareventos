@@ -20,7 +20,6 @@ const LandingPage: React.FC = () => {
   const currentLanguage = useAppSelector((state) => state.global.language);
   const [id, setId] = React.useState("Home");
 
-  
   React.useEffect(() => {
     if (currentLanguage === "en") {
       setId("Home");
@@ -38,7 +37,7 @@ const LandingPage: React.FC = () => {
       sx={{
         bgImageOpacity: 0.2,
         backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)),
-          url('https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLandingBack.png?alt=media&token=9be08f8e-94a2-4b6b-bc97-02ac91229832')`,
+          url('https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FFOTO%20PAGINA%20PRINCIPAL.jpg?alt=media&token=bdcee44c-3390-4292-9b09-ee1eafc4f7af')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "90vh",
@@ -65,23 +64,21 @@ const LandingPage: React.FC = () => {
           <Box
             sx={{
               display: "flex",
-              bgcolor: Colours.Crema,
-              borderRadius: 2,
-              opacity: 0.85,
               p: 1,
             }}
           >
             <Typography
-              variant="h4"
+              variant="h1"
               noWrap
               component="a"
               href="/"
               sx={{
-                fontFamily: "CALIBRI",
-                fontWeight: 900,
-                letterSpacing: ".4rem",
-                color: Colours.Verde,
+                fontFamily: "Lovelo, sans-serif",
+                fontWeight: 600,
+                letterSpacing: ".5rem",
+                color: Colours.Crema,
                 textDecoration: "none",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Agregar sombra al texto
               }}
             >
               El Encuentro
@@ -90,9 +87,9 @@ const LandingPage: React.FC = () => {
           <Box>
             <Typography
               gutterBottom
-              variant="subtitle1"
+              variant="h3"
               sx={{
-                fontFamily: "CALIBRI",
+                fontFamily: "Space Mono, monospace",
                 letterSpacing: ".2rem",
                 color: Colours.Crema,
               }}
