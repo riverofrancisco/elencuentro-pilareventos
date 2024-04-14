@@ -34,7 +34,7 @@ reducers: {
         state.sections = payload
     },
     setAllPictures: (state, {payload}) => {
-        state.sections = payload
+        state.pictures = payload
     },
     setIsAuth: (state, {payload}) => {
         state.isAuth = payload

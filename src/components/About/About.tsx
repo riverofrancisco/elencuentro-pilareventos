@@ -5,21 +5,14 @@ import { Colours } from "../../Theme/theme";
 
 export default function About() {
   const currentLanguage = useAppSelector((state) => state.global.language);
-  const [id, setId] = React.useState("Sobre Nosotros");
- // const title = id.split("-")[0] + " " + id.split("-")[1] 
-
-  React.useEffect(() => {
-    if (currentLanguage === "en") {
-      setId("About us");
-    } else if (currentLanguage === "es") {
-      setId("Sobre Nosotros");
-    }
-  }, [currentLanguage]);
+  const sections = useAppSelector((state) => state.global.sections);
+  const sectionData =
+    sections && sections.filter((section: any) => section.en == "About Us");
 
   return (
     <Grid
       container
-      id={id}
+      id={sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}
       borderBottom={0.5}
       sx={{
         px: { xs: "10%", sm: "15%" },
@@ -43,7 +36,7 @@ export default function About() {
             letterSpacing: ".2rem",
           }}
         >
-          {id}
+          {sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}
         </Typography>
       </Grid>
       <Grid
@@ -77,7 +70,8 @@ export default function About() {
               borderRadius: "3%",
               objectFit: "cover",
             }}
-            src="https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLandingBack.png?alt=media&token=9be08f8e-94a2-4b6b-bc97-02ac91229832"
+            src= {sectionData[0] ? sectionData[0].picture : "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FFOTO%20SOBRE%20NOSOTROS.jpeg?alt=media&token=1289f122-3d97-45a9-8b4f-4b06bd7ff18b"
+          }
             alt="main picture"
           />
         </Paper>
@@ -117,14 +111,9 @@ export default function About() {
             }}
           >
             <Typography variant="subtitle1">
-              En Quinta el Tata, contamos con la colaboración de ARPILAR.
-              Empresa líder en organización y coordinación de eventos
-              corporativos y sociales. Buscamos satisfacer las necesidades de
-              los clientes, acompañándolos desde el primer momento y
-              ofreciéndoles las mejores alternativas, propuestas y servicios. La
-              clave de nuestro éxito es el trabajo en equipo y escuchar al
-              cliente con la atención necesaria, para transformar sus ideas en
-              eventos únicos.
+              {sectionData[0]
+                ? sectionData[0].description[currentLanguage]
+                : "Somos un espacio de eventos en crecimiento, con trayectoria tanto en eventos sociales como empresariales, y masivos. Nuestra mayor motivación es crear eventos únicos, y nuestro objetivo principal es brindarles la mejor atención y el servicio posible, en un contexto de paz y naturaleza. Contamos con un espacio de 16.000 m2 disponible para crear el evento de tus sueños, con la versatilidad necesaria para realizarlo a la medida de tus deseos. El amplio espacio verde invita a crear escenas magníficas debajo de los árboles o armar las puestas con carpas a lo largo del predio. Incluso se pueden realizar ceremonias únicas entre los árboles, con los colores del atardecer."}
             </Typography>
           </Box>
         </Paper>

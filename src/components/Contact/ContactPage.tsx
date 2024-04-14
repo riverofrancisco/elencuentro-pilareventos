@@ -7,18 +7,12 @@ import MapLocation from "./Maps";
 
 export default function ContactPage() {
   const currentLanguage = useAppSelector((state) => state.global.language);
-  const [id, setId] = React.useState("Contacto");
-
-  React.useEffect(() => {
-    if (currentLanguage === "en") {
-      setId("Contact");
-    } else if (currentLanguage === "es") {
-      setId("Contacto");
-    }
-  }, [currentLanguage]);
+  const sections = useAppSelector((state) => state.global.sections);
+  const sectionData =
+    sections && sections.filter((section: any) => section.en == "Contact");
 
   return (
-    <Grid container borderBottom={0.5} id={id}>
+    <Grid container borderBottom={0.5} id={sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}>
       <Grid
         item
         xs={12}
@@ -36,7 +30,7 @@ export default function ContactPage() {
             letterSpacing: ".2rem",
           }}
         >
-          {id}
+          {sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}
         </Typography>
       </Grid>
       <Grid

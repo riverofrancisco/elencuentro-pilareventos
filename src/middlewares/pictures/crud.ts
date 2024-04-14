@@ -1,5 +1,5 @@
 import { db } from "../../config/firebase";
-import { Section } from "../../interfaces/interfaces";
+import { Picture, Section } from "../../interfaces/interfaces";
 import { collection, doc, addDoc, setDoc, deleteDoc, getDocs } from "firebase/firestore"; 
 
 
@@ -14,12 +14,12 @@ export const getPictures = async () => {
 }
 
 //ADD
-export const addPicture = async (item: Section) => {
+export const addPicture = async (item: any) => {
     try{
         await addDoc(collection(db, currentCollection), {
             ...item
              })
-        console.log(`Section ${item.en} added Succesfully`)
+        console.log(`Section ${item.originalTitle.en} added Succesfully`)
     } catch(error) {
         console.log(error)
     }

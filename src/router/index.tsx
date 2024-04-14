@@ -9,12 +9,15 @@ import ContactPage from "../components/Contact/ContactPage";
 import Gallery from "../components/Gallery/Gallery";
 import LandingPage from "../components/Landing/Title";
 import Footer from "../components/Footer/Footer";
+
+
 import InfoPage from "../components/Contact/InfoPage";
 import InteractiveGallery from "../components/Gallery/GalleryReact";
 import { useAppDispatch, useAppSelector } from "../hooks/hooksRedux";
 import { getSections } from "../middlewares/sections/crud";
 import { getPictures } from "../middlewares/pictures/crud";
 import { PicturesSetter, SectionsSetter } from "../redux/elencuentro/actions";
+import FormComponent from "../components/DEV/PictureCreationForm";
 
 export const AppRouter = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +41,7 @@ export const AppRouter = () => {
       <NavBar />
       <Routes>
         <Route path={`/`} element={<LandingPage />} />
+        <Route path={`/devv`} element={<FormComponent />}/>
       </Routes>
       <About />
       <Gallery />
