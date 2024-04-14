@@ -12,7 +12,7 @@ export default function About() {
   return (
     <Grid
       container
-      id={sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}S
+      id={sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}
       sx={{
         px: { xs: "10%", sm: "15%" },
         py: 3,
