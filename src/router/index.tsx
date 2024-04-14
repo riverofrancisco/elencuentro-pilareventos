@@ -25,9 +25,10 @@ export const AppRouter = () => {
   const RDXpictures = useAppSelector((state) => state.global.pictures);
   const getAllData = async () => {
     const sectionsData = await getSections();
-    const picturesData = await getPictures();
+    let picturesData = await getPictures();
+    const orderedPicturesData = picturesData.sort((a: any, b: any) => a.index - b.index);
     dispatch(SectionsSetter(sectionsData));
-    dispatch(PicturesSetter(picturesData));
+    dispatch(PicturesSetter(orderedPicturesData));
   };
 
   useEffect(() => {

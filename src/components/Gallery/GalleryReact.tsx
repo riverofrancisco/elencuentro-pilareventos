@@ -3,6 +3,7 @@ import { Box, IconButton, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooksRedux";
 import { galleryPictures } from "../../draftData/data";
 
 const images = [
@@ -24,14 +25,17 @@ interface Props {
   selectedItem: any;
   openPicture: boolean;
   setOpen: any;
+  pictures: any
 }
 
 export default function InteractiveGallery({
   selectedItem,
   openPicture,
   setOpen,
+  pictures
 }: Props) {
-  console.log(selectedItem);
+
+ 
 
   return (
     <Box
@@ -86,7 +90,7 @@ export default function InteractiveGallery({
         }}
       >
         <ImageGallery
-          items={galleryPictures}
+          items={pictures}
           showBullets
           thumbnailPosition="right"
           startIndex={selectedItem}

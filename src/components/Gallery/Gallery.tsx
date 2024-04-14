@@ -37,7 +37,7 @@ export default function Gallery() {
   const sectionData =
     sections && sections.filter((section: any) => section.en == "Gallery");
 
-  const pictures = useAppSelector((state: any) => state.global.pictures);
+  const galleryPics = useAppSelector((state: any) => state.global.pictures);
 
   const [selectedItem, setSelected] = React.useState(0);
   const [openPicture, setOpenPicture] = React.useState(false);
@@ -50,8 +50,8 @@ export default function Gallery() {
   };
 
   React.useEffect(() => {
-    console.log(pictures);
-    console.log(sectionData[0])
+    console.log(galleryPics);
+    console.log(sectionData[0]);
   }, [currentLanguage]);
 
   return (
@@ -94,23 +94,25 @@ export default function Gallery() {
           borderRadius: 3,
         }}
       >
-        {galleryPictures.map((pic: any, index: number) => {
-          return (
-            <ImageCard
-              key={pic.original}
-              pic={pic}
-              refresh={pic.originalTitle}
-              item={index}
-              handleOpenPicture={handleOpenPicture}
-            />
-          );
-        })}
+        {galleryPics &&
+          galleryPics.map((pic: any, index: number) => {
+            return (
+              <ImageCard
+                key={pic.original}
+                pic={pic}
+                refresh={pic.originalTitle.en}
+                item={index}
+                handleOpenPicture={handleOpenPicture}
+              />
+            );
+          })}
       </Box>
 
       <InteractiveGallery
         selectedItem={selectedItem}
         openPicture={openPicture}
         setOpen={setOpenPicture}
+        pictures={galleryPics}
       />
     </Box>
   );

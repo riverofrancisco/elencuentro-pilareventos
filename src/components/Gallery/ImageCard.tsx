@@ -56,7 +56,8 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
       {/* <Badge  anchorOrigin={{ vertical: 'top', horizontal: 'right' }} badgeContent={ isAuth && <MenuOptionsSkill key={skill.id} id={skill.id} updateform={<SkillForm skill={skill} refresh={refresh} currentLanguage={currentLanguage} isEditing={true}/>}/>}> */}
 
       <Tooltip
-        title={pic.originalTitle}
+        title={pic.originalTitle[currentLanguage]
+        }
         placement="bottom-end"
         onClose={handleTooltipClose}
         onOpen={handleTooltipOpen}
@@ -70,7 +71,7 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
             objectFit: "cover",
           }}
           src={pic.original}
-          alt={pic.originalTitle}
+          alt={pic.originalTitle[currentLanguage]}
         />
       </Tooltip>
 
