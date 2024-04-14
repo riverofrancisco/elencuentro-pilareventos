@@ -8,7 +8,9 @@ interface InitialState {
     isAuth: boolean,
     language: string,
     mode: PaletteMode,
-    sections: Section[]
+    sections: any,
+    pictures: any
+
 }
 
 const initialState: InitialState = {
@@ -17,7 +19,8 @@ status: "ok",
 isAuth: false,
 language: "es",
 mode: "light",
-sections: []
+sections: [],
+pictures: []
 }
 
 export const global = createSlice({
@@ -28,6 +31,9 @@ reducers: {
         state.value = state.value + payload
     },
     setAllSections: (state, {payload}) => {
+        state.sections = payload
+    },
+    setAllPictures: (state, {payload}) => {
         state.sections = payload
     },
     setIsAuth: (state, {payload}) => {

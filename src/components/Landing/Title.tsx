@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/hooksRedux";
-import { Adder } from "../../redux/elencuentro/actions";
 import Button from "@mui/material/Button";
 import LandingBG from "./Landing";
 import { Colours } from "../../Theme/theme";
@@ -21,10 +20,7 @@ const LandingPage: React.FC = () => {
   const currentLanguage = useAppSelector((state) => state.global.language);
   const [id, setId] = React.useState("Home");
 
-  const handleClick = () => {
-    dispatch(Adder(1));
-  };
-
+  
   React.useEffect(() => {
     if (currentLanguage === "en") {
       setId("Home");

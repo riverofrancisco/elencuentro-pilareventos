@@ -38,11 +38,12 @@ export const SectionsSetter = (allSections: any): ThunkAction<
     return dispatch(reducer.setAllSections(allSections));
 }}
 
-export const Adder = (amount: number): ThunkAction<
+//GALLERY
+export const PicturesSetter = (allPictures: any): ThunkAction<
   void,
   RootState,
   unknown,
   AnyAction
 > => {return (dispatch) => {
-    return dispatch(reducer.valueAdder(amount))
+    return dispatch(reducer.setAllPictures(allPictures));
 }}
