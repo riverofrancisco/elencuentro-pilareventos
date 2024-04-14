@@ -58,7 +58,7 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
       <Tooltip
         title={pic.originalTitle
         }
-        placement="bottom-end"
+        placement="bottom"
         onClose={handleTooltipClose}
         onOpen={handleTooltipOpen}
         open={open}
