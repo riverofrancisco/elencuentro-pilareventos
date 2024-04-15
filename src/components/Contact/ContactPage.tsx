@@ -28,6 +28,7 @@ export default function ContactPage() {
             fontFamily: "Lovelo, sans-serif",
             fontWeight: 600,
             letterSpacing: ".1rem",
+            fontSize: {xs:"calc(9vw)", md: "calc(4vw)"},
           }}
         >
           {sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}

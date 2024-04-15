@@ -76,6 +76,7 @@ export default function Gallery() {
           fontFamily: "Lovelo, sans-serif",
           fontWeight: 600,
           letterSpacing: ".1rem",
+          fontSize:  {xs:"calc(9vw)", md: "calc(4vw)"},
           py: 3,
         }}
       >

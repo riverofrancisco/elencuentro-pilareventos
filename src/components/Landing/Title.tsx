@@ -31,6 +31,7 @@ const LandingPage: React.FC = () => {
         xs={12}
         md={12}
         sx={{
+          mt: { xs: 0, lg: -12 },
           zIndex: 0,
           display: "flex",
           alignItems: "center",
@@ -39,7 +40,7 @@ const LandingPage: React.FC = () => {
       >
         <Box
           sx={{
-            height: "50%",
+            height: "40%",
             display: { xs: "none", md: "flex" },
           }}
         >
@@ -58,9 +59,8 @@ const LandingPage: React.FC = () => {
           />
         </Box>
         <Box
-          height={"80vh"}
           sx={{
-            py: { sx: 0, md: 10 },
+            py: { sx: 0, md: 5, lg: 10 },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -85,7 +85,7 @@ const LandingPage: React.FC = () => {
                 color: Colours.Crema,
                 textDecoration: "none",
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                fontSize: "calc(9vw)",
+                fontSize: { xs: "calc(9vw)", md: "calc(6vw)" },
               }}
             >
               El Encuentro
@@ -99,7 +99,7 @@ const LandingPage: React.FC = () => {
                 fontFamily: "Space Mono, monospace",
                 letterSpacing: ".2rem",
                 color: Colours.Crema,
-                fontSize: "calc(5vw)",
+                fontSize: { xs: "calc(5vw)", md: "calc(3vw)" },
               }}
             >
               PILAR EVENTOS

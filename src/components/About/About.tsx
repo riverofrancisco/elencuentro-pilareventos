@@ -24,6 +24,7 @@ export default function About() {
         sx={{
           display: "flex",
           justifyContent: "center",
+        
           py: 2,
         }}
       >
@@ -33,6 +34,7 @@ export default function About() {
             fontFamily: "Lovelo, sans-serif",
             fontWeight: 600,
             letterSpacing: ".1rem",
+            fontSize:  {xs:"calc(9vw)", md: "calc(4vw)"},
           }}
         >
           {sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}
@@ -69,8 +71,11 @@ export default function About() {
               borderRadius: "3%",
               objectFit: "cover",
             }}
-            src= {sectionData[0] ? sectionData[0].picture : "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FFOTO%20SOBRE%20NOSOTROS.jpeg?alt=media&token=1289f122-3d97-45a9-8b4f-4b06bd7ff18b"
-          }
+            src={
+              sectionData[0]
+                ? sectionData[0].picture
+                : "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FFOTO%20SOBRE%20NOSOTROS.jpeg?alt=media&token=1289f122-3d97-45a9-8b4f-4b06bd7ff18b"
+            }
             alt="main picture"
           />
         </Paper>
@@ -106,10 +111,15 @@ export default function About() {
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
-              p: 8,
+              p: { xs: 2, md: 4, lg: 7 },
             }}
           >
-            <Typography variant="subtitle1">
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "justify",
+              }}
+            >
               {sectionData[0]
                 ? sectionData[0].description[currentLanguage]
                 : "Somos un espacio de eventos en crecimiento, con trayectoria tanto en eventos sociales como empresariales, y masivos. Nuestra mayor motivación es crear eventos únicos, y nuestro objetivo principal es brindarles la mejor atención y el servicio posible, en un contexto de paz y naturaleza. Contamos con un espacio de 16.000 m2 disponible para crear el evento de tus sueños, con la versatilidad necesaria para realizarlo a la medida de tus deseos. El amplio espacio verde invita a crear escenas magníficas debajo de los árboles o armar las puestas con carpas a lo largo del predio. Incluso se pueden realizar ceremonias únicas entre los árboles, con los colores del atardecer."}
