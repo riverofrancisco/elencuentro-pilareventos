@@ -23,7 +23,7 @@ const LanguageButton: React.FC = () => {
       size="small"
       sx={{ p: 1, my: 1 }}
     >
-      {currentLanguage}
+      <Typography sx={{ fontFamily: "Space Mono, monospace",}}> {currentLanguage}</Typography>
     </IconButton>
   );
 };

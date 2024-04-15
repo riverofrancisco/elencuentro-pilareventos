@@ -56,7 +56,7 @@ export default function Gallery() {
 
   return (
     <Box
-      id={sectionData[0] ? sectionData[0][currentLanguage] : "Galeria"}
+      id={sectionData[0] ? sectionData[0][currentLanguage] : "Galería"}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -73,14 +73,14 @@ export default function Gallery() {
         component="div"
         color="inherit"
         sx={{
-          fontFamily: "CALIBRI",
-          fontWeight: 900,
-          letterSpacing: ".2rem",
+          fontFamily: "Lovelo, sans-serif",
+          fontWeight: 600,
+          letterSpacing: ".1rem",
           py: 3,
         }}
       >
         {" "}
-        {sectionData[0] ? sectionData[0][currentLanguage] : "Galeria"}
+        {sectionData[0] ? sectionData[0][currentLanguage] : "Galería"}
       </Typography>
       <Box
         sx={{

@@ -1,37 +1,20 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
 import { Typography } from "@mui/material/";
-import Fab from "@mui/material/Fab";
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
-import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
-
 import { useAppDispatch, useAppSelector } from "../../hooks/hooksRedux";
-import Button from "@mui/material/Button";
-import LandingBG from "./Landing";
 import { Colours } from "../../Theme/theme";
-import LOGOLIGHT from "../../draftData/Images/LogoELEN Light.png";
-import LOGO from "../../draftData/Images/LogoELEN.png";
-import BGland from "../../draftData/Images/LandingBack.png";
 
 const LandingPage: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const status = useAppSelector((state) => state.global.value);
+  const sections = useAppSelector((state) => state.global.sections);
+  const sectionData =
+    sections && sections.filter((section: any) => section.en == "Home");
   const currentLanguage = useAppSelector((state) => state.global.language);
-  const [id, setId] = React.useState("Home");
-
-  React.useEffect(() => {
-    if (currentLanguage === "en") {
-      setId("Home");
-    } else if (currentLanguage === "es") {
-      setId("Inicio");
-    }
-  }, [currentLanguage]);
 
   return (
     <Grid
       container
-      id={id}
+      id={sectionData[0] ? sectionData[0][currentLanguage] : "Inicio"}
       mt={12}
       position={"relative"}
       sx={{
@@ -47,19 +30,42 @@ const LandingPage: React.FC = () => {
         item
         xs={12}
         md={12}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ zIndex: 0 }}
+        sx={{
+          zIndex: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Box
+          sx={{
+            height: "50%",
+            display: { xs: "none", md: "flex" },
+          }}
+        >
+          <img
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+            src={
+              sectionData[0]
+                ? sectionData[0].logo
+                : "https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLogoLightShadow.png?alt=media&token=53ff89af-2d41-46a7-a49f-0f2b6345584e"
+            }
+            alt="logo"
+          />
+        </Box>
+        <Box
           height={"80vh"}
-          width="100%"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          sx={{ py: { sx: 0, md: 10 } }}
+          sx={{
+            py: { sx: 0, md: 10 },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           <Box
             sx={{
@@ -78,7 +84,8 @@ const LandingPage: React.FC = () => {
                 letterSpacing: ".5rem",
                 color: Colours.Crema,
                 textDecoration: "none",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Agregar sombra al texto
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                fontSize: "calc(9vw)",
               }}
             >
               El Encuentro
@@ -87,11 +94,12 @@ const LandingPage: React.FC = () => {
           <Box>
             <Typography
               gutterBottom
-              variant="h3"
+              variant="h4"
               sx={{
                 fontFamily: "Space Mono, monospace",
                 letterSpacing: ".2rem",
                 color: Colours.Crema,
+                fontSize: "calc(5vw)",
               }}
             >
               PILAR EVENTOS

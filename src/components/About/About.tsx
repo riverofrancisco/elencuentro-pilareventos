@@ -30,9 +30,9 @@ export default function About() {
         <Typography
           variant="h3"
           sx={{
-            fontFamily: "CALIBRI",
-            fontWeight: 900,
-            letterSpacing: ".2rem",
+            fontFamily: "Lovelo, sans-serif",
+            fontWeight: 600,
+            letterSpacing: ".1rem",
           }}
         >
           {sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}

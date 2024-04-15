@@ -25,9 +25,9 @@ export default function ContactPage() {
         <Typography
           variant="h3"
           sx={{
-            fontFamily: "CALIBRI",
-            fontWeight: 900,
-            letterSpacing: ".2rem",
+            fontFamily: "Lovelo, sans-serif",
+            fontWeight: 600,
+            letterSpacing: ".1rem",
           }}
         >
           {sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}

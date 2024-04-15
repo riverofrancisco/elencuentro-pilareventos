@@ -269,7 +269,7 @@ export default function NavBar() {
                     alt="logo"
                   />
                 </Box>
-                <Typography variant="h6" component="div" color="inherit">
+                <Typography variant="h6" component="div" color="inherit" sx={{ fontFamily: "Lovelo, sans-serif",}}>
                   El Encuentro
                 </Typography>
               </Box>
@@ -295,7 +295,7 @@ export default function NavBar() {
                       }}
                       onClick={() => scrollToTextField(item)}
                     >
-                      <Typography variant="subtitle1">{item}</Typography>
+                      <Typography variant="subtitle1" sx={{ fontFamily: "Space Mono, monospace",}}>{item}</Typography>
                     </Box>{" "}
                   </Box>
                 ))}
