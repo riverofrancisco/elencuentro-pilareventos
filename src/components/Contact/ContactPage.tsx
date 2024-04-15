@@ -12,7 +12,11 @@ export default function ContactPage() {
     sections && sections.filter((section: any) => section.en == "Contact");
 
   return (
-    <Grid container borderBottom={0.5} id={sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}>
+    <Grid
+      container
+      borderBottom={0.5}
+      id={sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}
+    >
       <Grid
         item
         xs={12}
@@ -28,7 +32,7 @@ export default function ContactPage() {
             fontFamily: "Lovelo, sans-serif",
             fontWeight: 600,
             letterSpacing: ".1rem",
-            fontSize: {xs:"calc(9vw)", md: "calc(4vw)"},
+            fontSize: { xs: "calc(9vw)", sm: "calc(4vw)" },
           }}
         >
           {sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}

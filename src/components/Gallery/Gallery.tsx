@@ -76,7 +76,7 @@ export default function Gallery() {
           fontFamily: "Lovelo, sans-serif",
           fontWeight: 600,
           letterSpacing: ".1rem",
-          fontSize:  {xs:"calc(9vw)", md: "calc(4vw)"},
+          fontSize: { xs: "calc(9vw)", sm: "calc(4vw)" },
           py: 3,
         }}
       >
@@ -86,7 +86,7 @@ export default function Gallery() {
       <Box
         sx={{
           display: "flex",
-          bgcolor: Colours.Beige2,
+          bgcolor: Colours.Crema,
           justifyContent: "center",
           width: { xs: "90%", sm: "80%", md: "75%" },
           flexWrap: "wrap",

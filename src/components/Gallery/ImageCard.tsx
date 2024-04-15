@@ -43,7 +43,7 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
       sx={{
         width: { xs: "49%", sm: "33%" },
       p:0.5,
-        bgcolor: Colours.Beige2,
+        bgcolor: Colours.Crema,
         opacity: 1,
         transition: "opacity 0.3s ease-in-out",
         "&:hover": {

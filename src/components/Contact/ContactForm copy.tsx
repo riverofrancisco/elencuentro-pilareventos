@@ -36,7 +36,7 @@ interface Props {
   currentLanguage: string;
 }
 
-export default function ContactForm({ currentLanguage }: Props) {
+export default function PREVContactForm({ currentLanguage }: Props) {
   const defaultType = {
     options: ["Alquiler espacio"],
     getOptionLabel: (option: any) => option,
@@ -123,10 +123,10 @@ export default function ContactForm({ currentLanguage }: Props) {
     ];
 
     // Verifica si todos los campos requeridos están llenos y válidos
-    const allFieldsstandard = requiredFields.every((field) => field.valid);
+    const allFieldsFilled = requiredFields.every((field) => field.valid);
 
     // Actualiza el estado de submiteable
-    setSubmiteable(allFieldsstandard);
+    setSubmiteable(allFieldsFilled);
   }
 
   useEffect(() => {
@@ -193,6 +193,8 @@ export default function ContactForm({ currentLanguage }: Props) {
       sx={{
         mx: { xs: "2%", sm: "11%" },
         p: { xs: "2.5%", md: "2%" },
+        borderRadius: 3,
+        bgcolor: Colours.Gris,
       }}
     >
       <Grid
@@ -210,11 +212,11 @@ export default function ContactForm({ currentLanguage }: Props) {
             mb: { xs: 2, md: "none" },
             mx: { xs: "none", md: 1 },
             bgcolor: Colours.Crema,
-
+            borderRadius: 5,
             width: "100%",
           }}
         >
-          <Typography variant="h6" sx={{fontFamily: "Space Mono, monospace",}}>
+          <Typography variant="h6">
             {currentLanguage === "es" ? "Sobre el Evento" : "Event Info"}
           </Typography>
           <Box
@@ -236,7 +238,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                     currentLanguage === "es" ? "Tipo de Evento" : "Event Type"
                   }
                   name="type"
-                  variant="standard"
+                  variant="outlined"
                   size="small"
                   fullWidth
                 />
@@ -272,7 +274,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 name="guests"
                 value={currentData.guests}
                 onChange={handleChange}
-                variant="standard"
+                variant="outlined"
                 sx={{ width: "97%" }}
                 size="small"
                 InputProps={{
@@ -307,7 +309,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 name="date"
                 value={currentData.date}
                 onChange={handleChange}
-                variant="standard"
+                variant="outlined"
                 sx={{ width: "97%" }}
                 size="small"
                 InputProps={{
@@ -331,7 +333,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               name="comments"
               value={currentData.comments}
               onChange={handleChange}
-              variant="standard"
+              variant="filled"
               sx={{ width: "100%" }}
               size="small"
               rows={5}
@@ -358,12 +360,12 @@ export default function ContactForm({ currentLanguage }: Props) {
             justifyContent: "center",
             p: 5,
             mx: { xs: "none", md: 1 },
-         
+            borderRadius: 5,
             width: "100%",
             bgcolor: Colours.Crema,
           }}
         >
-          <Typography variant="h6" sx={{fontFamily: "Space Mono, monospace", }}>
+          <Typography variant="h6">
             {currentLanguage === "es"
               ? "Información de Contacto"
               : "Contact Info"}
@@ -375,7 +377,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               justifyContent: "space-evenly",
             }}
           >
-            <AccountCircle sx={{ color: "action.active", mt:1.5, mr:1 }} />
+            <AccountCircle sx={{ color: "action.active", m: 1 }} />
             <Box
               sx={{
                 display: "flex",
@@ -398,7 +400,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                   name="host.name"
                   value={currentData.host.name}
                   onChange={handleChange}
-                  variant="standard"
+                  variant="filled"
                   sx={{ width: "100%" }}
                   size="small"
                   required
@@ -418,7 +420,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                   name="host.lastName"
                   value={currentData.host.lastName}
                   onChange={handleChange}
-                  variant="standard"
+                  variant="filled"
                   sx={{ width: "100%" }}
                   size="small"
                   required
@@ -437,7 +439,7 @@ export default function ContactForm({ currentLanguage }: Props) {
             <EmailIcon
               sx={{
                 color: "action.active",
-                mt:1.5, mr:1
+                m: 1,
               }}
             />
             <Box sx={{ display: "flex", alignItems: "center", width: "91%" }}>
@@ -457,7 +459,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 label={
                   currentLanguage === "es" ? "Correo Electrónico" : "Email"
                 }
-                variant="standard"
+                variant="filled"
                 value={currentData.host.email}
                 sx={{ width: "100%" }}
                 onChange={handleChange}
@@ -473,7 +475,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               my: 1,
             }}
           >
-            <PhoneIcon sx={{ color: "action.active", mt:1.5, mr:1 }} />
+            <PhoneIcon sx={{ color: "action.active", m: 1 }} />
             <Box
               my={1}
               sx={{ display: "flex", alignItems: "center", width: "91%" }}
@@ -485,7 +487,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 name="host.phone"
                 value={currentData.host.phone}
                 onChange={handleChange}
-                variant="standard"
+                variant="filled"
                 sx={{ width: "100%" }}
                 size="small"
                 required
