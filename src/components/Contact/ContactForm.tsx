@@ -38,7 +38,16 @@ interface Props {
 
 export default function ContactForm({ currentLanguage }: Props) {
   const defaultType = {
-    options: ["Alquiler espacio"],
+    options: [
+      "Casamiento",
+      "Cumpleaños",
+      "Fiesta de 15",
+      "Bar / Bat Mitzvah",
+      "Ceremonia Egresados",
+      "Aniversario",
+      "Corporativo",
+      "Otro"
+    ],
     getOptionLabel: (option: any) => option,
   };
 
@@ -52,9 +61,14 @@ export default function ContactForm({ currentLanguage }: Props) {
     setCurrentData({
       ...currentData,
       type: value as
-        | "Propuesta integral"
-        | "Alquiler espacio"
-        | "Alquiler espacio y ambientación",
+        | "Casamiento"
+        | "Cumpleaños"
+        | "Fiesta de 15"
+        | "Bar / Bat Mitzvah"
+        | "Ceremonia Egresados"
+        | "Aniversario"
+        | "Corporativo"
+        | "Otro",
     });
   };
 
@@ -214,7 +228,7 @@ export default function ContactForm({ currentLanguage }: Props) {
             width: "100%",
           }}
         >
-          <Typography variant="h6" sx={{fontFamily: "Space Mono, monospace",}}>
+          <Typography variant="h6" sx={{ fontFamily: "Space Mono, monospace" }}>
             {currentLanguage === "es" ? "Sobre el Evento" : "Event Info"}
           </Typography>
           <Box
@@ -358,12 +372,12 @@ export default function ContactForm({ currentLanguage }: Props) {
             justifyContent: "center",
             p: 5,
             mx: { xs: "none", md: 1 },
-         
+
             width: "100%",
             bgcolor: Colours.Crema,
           }}
         >
-          <Typography variant="h6" sx={{fontFamily: "Space Mono, monospace", }}>
+          <Typography variant="h6" sx={{ fontFamily: "Space Mono, monospace" }}>
             {currentLanguage === "es"
               ? "Información de Contacto"
               : "Contact Info"}
@@ -375,7 +389,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               justifyContent: "space-evenly",
             }}
           >
-            <AccountCircle sx={{ color: "action.active", mt:1.5, mr:1 }} />
+            <AccountCircle sx={{ color: "action.active", mt: 1.5, mr: 1 }} />
             <Box
               sx={{
                 display: "flex",
@@ -437,7 +451,8 @@ export default function ContactForm({ currentLanguage }: Props) {
             <EmailIcon
               sx={{
                 color: "action.active",
-                mt:1.5, mr:1
+                mt: 1.5,
+                mr: 1,
               }}
             />
             <Box sx={{ display: "flex", alignItems: "center", width: "91%" }}>
@@ -473,7 +488,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               my: 1,
             }}
           >
-            <PhoneIcon sx={{ color: "action.active", mt:1.5, mr:1 }} />
+            <PhoneIcon sx={{ color: "action.active", mt: 1.5, mr: 1 }} />
             <Box
               my={1}
               sx={{ display: "flex", alignItems: "center", width: "91%" }}
@@ -498,12 +513,10 @@ export default function ContactForm({ currentLanguage }: Props) {
           disabled={!submiteable}
           variant="contained"
           color="primary"
-          endIcon={<SendIcon />}
           sx={{
             my: 1,
             width: "100%",
             alignSelf: "center",
-            borderRadius: 2,
           }}
         >
           {currentLanguage === "es" ? "Enviar Mensaje" : "Sent Message"}

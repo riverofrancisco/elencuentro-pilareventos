@@ -35,7 +35,16 @@ export interface FormContent {
     guests: number,
     date: string,
     host: PersonalInfo, 
-    type?: ["Propuesta integral", "Alquiler espacio", "Alquiler espacio y ambientación"]
+    type?: [
+        "Casamiento",
+        "Cumpleaños",
+        "Fiesta de 15",
+        "Bar / Bat Mitzvah",
+        "Ceremonia Egresados",
+        "Aniversario",
+        "Corporativo",
+        "Otro"
+      ],
     coments: string
 }
 
@@ -43,7 +52,7 @@ export const emptyFormContent = {
     guests: 0,
     date: "",
     host: emptyPersonalInfo,
-    type: "Alquiler espacio",
+    type: "Casamiento",
     comments: ""
 }
 
