@@ -88,7 +88,7 @@ export default function Gallery() {
           display: "flex",
           bgcolor: Colours.Crema,
           justifyContent: "center",
-          width: { xs: "90%", sm: "80%", md: "75%" },
+          width: { xs: "90%", sm: "80%", md: "70%" },
           flexWrap: "wrap",
           boxShadow: 15,
           py: 0.5,

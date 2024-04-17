@@ -46,7 +46,7 @@ export default function ContactForm({ currentLanguage }: Props) {
       "Ceremonia Egresados",
       "Aniversario",
       "Corporativo",
-      "Otro"
+      "Otro",
     ],
     getOptionLabel: (option: any) => option,
   };
@@ -213,14 +213,14 @@ export default function ContactForm({ currentLanguage }: Props) {
         item
         xs={12}
         md={6}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "start" }}
       >
         <Paper
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            p: 5,
+            p: 4,
             mb: { xs: 2, md: "none" },
             mx: { xs: "none", md: 1 },
             bgcolor: Colours.Crema,
@@ -362,6 +362,7 @@ export default function ContactForm({ currentLanguage }: Props) {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
+          justifyContent: "start"
         }}
       >
         <Paper
@@ -370,9 +371,8 @@ export default function ContactForm({ currentLanguage }: Props) {
             flexDirection: "column",
             alingItems: "center",
             justifyContent: "center",
-            p: 5,
+            p: 4,
             mx: { xs: "none", md: 1 },
-
             width: "100%",
             bgcolor: Colours.Crema,
           }}
@@ -389,7 +389,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               justifyContent: "space-evenly",
             }}
           >
-            <AccountCircle sx={{ color: "action.active", mt: 1.5, mr: 1 }} />
+            <AccountCircle sx={{ color: "action.active", mt: 1.5, mx: 1 }} />
             <Box
               sx={{
                 display: "flex",
