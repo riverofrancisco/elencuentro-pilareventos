@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <Grid
       container
-      borderBottom={0.5}
+    
       id={sectionData[0] ? sectionData[0][currentLanguage] : "Contacto"}
     >
       <Grid
@@ -23,7 +23,7 @@ export default function ContactPage() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          pt: 2,
+          pt: {xs:2, md: 6},
         }}
       >
         <Typography
@@ -45,7 +45,6 @@ export default function ContactPage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          p: 3,
         }}
       >
         <ContactForm currentLanguage={currentLanguage} />

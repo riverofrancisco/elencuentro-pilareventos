@@ -77,7 +77,7 @@ export default function Gallery() {
           fontWeight: 600,
           letterSpacing: ".1rem",
           fontSize: { xs: "calc(9vw)", sm: "calc(4vw)" },
-          py: 3,
+          py: 2,
         }}
       >
         {" "}
@@ -90,8 +90,7 @@ export default function Gallery() {
           justifyContent: "center",
           width: { xs: "90%", sm: "80%", md: "70%" },
           flexWrap: "wrap",
-          boxShadow: 15,
-          py: 0.5,
+          pb: 5,
           borderRadius: 3,
         }}
       >

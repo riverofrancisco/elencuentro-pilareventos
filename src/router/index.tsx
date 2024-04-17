@@ -44,9 +44,9 @@ export const AppRouter = () => {
         <Route path={`/`} element={<LandingPage />} />
         <Route path={`/devv`} element={<FormComponent />}/>
       </Routes>
+      <ContactPage />
       <About />
       <Gallery />
-      <ContactPage />
       <Footer />
     </div>
   );

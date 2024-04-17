@@ -52,9 +52,10 @@ export default function ContactForm({ currentLanguage }: Props) {
     ],
     getOptionLabel: (option: any) => option,
   };
+  const stats = ["Redes Sociales", "Conocidos", "Otra"];
 
-  const hours = Array.from({ length: 24 }, (_, index) => index); // Genera un array de horas del 0 al 23
-  const minutes = ["00", "15", "30", "45"]; // Genera un array de minutos del 0 al 59
+  const hours = Array.from({ length: 24 }, (_, index) => index);
+  const minutes = ["00", "15", "30", "45"];
   const HHMM = hours.flatMap((hour) => {
     return minutes.map((minute) => `${hour}:${minute}`);
   });
@@ -174,6 +175,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         client_name: `${currentData.host.name}`,
         event_type: `${currentData.type}`,
         event_date: `${currentData.date}`,
+        event_hour: `${currentData.hour}`,
         event_guests: `${currentData.guests}`,
         client_lastname: `${currentData.host.lastName}`,
         client_email: `${currentData.host.email}`,
@@ -232,7 +234,6 @@ export default function ContactForm({ currentLanguage }: Props) {
             mb: { xs: 2, md: "none" },
             mx: { xs: "none", md: 1 },
             bgcolor: Colours.Crema,
-
             width: "100%",
           }}
         >
@@ -322,7 +323,6 @@ export default function ContactForm({ currentLanguage }: Props) {
                   display: "flex",
                   alignItems: "end",
                   justifyContent: { xs: "space-between", md: "space-evenly" },
-
                   mt: { xs: 3, md: "none" },
                 }}
               >
@@ -371,12 +371,34 @@ export default function ContactForm({ currentLanguage }: Props) {
               name="comments"
               value={currentData.comments}
               onChange={handleChange}
+              variant="filled"
+              sx={{ width: "100%" }}
+              size="small"
+              rows={3}
+            />{" "}
+          </Box>
+          <Box my={1.5} sx={{ display: "flex", alignItems: "center" }}>
+            <TextField
+              select
+              label={
+                currentLanguage === "es"
+                  ? "¿Como nos conoció?"
+                  : "How did you hear about us?"
+              }
+              name="stats"
+              value={currentData.stats}
+              onChange={handleChange}
               variant="standard"
               sx={{ width: "100%" }}
               size="small"
-              rows={5}
-              required
-            />{" "}
+            >
+              {" "}
+              {stats.map((stat) => (
+                <MenuItem key={stat} value={stat}>
+                  {stat}
+                </MenuItem>
+              ))}
+            </TextField>
           </Box>
         </Paper>
       </Grid>
