@@ -34,6 +34,7 @@ export const emptyPersonalInfo = {
 export interface FormContent {
     guests: number,
     date: string,
+    hour: string,
     host: PersonalInfo, 
     type?: [
         "Casamiento",
@@ -45,15 +46,18 @@ export interface FormContent {
         "Corporativo",
         "Otro"
       ],
-    coments: string
+    coments: string,
+    stats: string
 }
 
 export const emptyFormContent = {
     guests: 0,
     date: "",
+    hour: "",
     host: emptyPersonalInfo,
     type: "Casamiento",
-    comments: ""
+    comments: "",
+    stats: ""
 }
 
 export interface Picture {

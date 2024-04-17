@@ -8,6 +8,8 @@ import {
   Grid,
   Box,
   Autocomplete,
+  InputAdornment,
+  MenuItem,
 } from "@mui/material";
 
 //ICONS
@@ -50,6 +52,12 @@ export default function ContactForm({ currentLanguage }: Props) {
     ],
     getOptionLabel: (option: any) => option,
   };
+
+  const hours = Array.from({ length: 24 }, (_, index) => index); // Genera un array de horas del 0 al 23
+  const minutes = ["00", "15", "30", "45"]; // Genera un array de minutos del 0 al 59
+  const HHMM = hours.flatMap((hour) => {
+    return minutes.map((minute) => `${hour}:${minute}`);
+  });
 
   //// INPUTS
   const [currentData, setCurrentData] = useState(emptyFormContent);
@@ -270,9 +278,10 @@ export default function ContactForm({ currentLanguage }: Props) {
             <Box
               sx={{
                 display: "flex",
-                alignItems: "center",
-                width: { xs: "100%", sm: "45%" },
-                justifyContent: { xs: "center", sm: "left" },
+                flexDirection: { xs: "column", md: "row" },
+                alignItems: { xs: "center", md: "end" },
+                width: { xs: "100%" },
+                justifyContent: { xs: "center", md: "space-between" },
                 mb: { xs: 1.5, sm: 0 },
               }}
             >
@@ -287,7 +296,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 value={currentData.guests}
                 onChange={handleChange}
                 variant="standard"
-                sx={{ width: "97%" }}
+                sx={{ width: { xs: "100%", md: "30%" } }}
                 size="small"
                 InputProps={{
                   inputProps: {
@@ -307,34 +316,51 @@ export default function ContactForm({ currentLanguage }: Props) {
                 }
                 required
               />{" "}
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: { xs: "center", sm: "right" },
-                width: "100%",
-              }}
-            >
-              <TextField
-                type="date"
-                name="date"
-                value={currentData.date}
-                onChange={handleChange}
-                variant="standard"
-                sx={{ width: "97%" }}
-                size="small"
-                InputProps={{
-                  inputProps: {
-                    min: new Date().toISOString().split("T")[0],
-                    max: "2025-12-31",
-                  },
+              <Box
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "end",
+                  justifyContent: { xs: "space-between", md: "space-evenly" },
+
+                  mt: { xs: 3, md: "none" },
                 }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                required
-              />{" "}
+              >
+                <TextField
+                  type="date"
+                  name="date"
+                  value={currentData.date}
+                  onChange={handleChange}
+                  variant="standard"
+                  sx={{ width: { xs: "60%" } }}
+                  size="small"
+                  InputProps={{
+                    inputProps: {
+                      min: new Date().toISOString().split("T")[0],
+                      max: "2025-12-31",
+                    },
+                  }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  required
+                />{" "}
+                <TextField
+                  select
+                  label="hh:mm"
+                  name="hour"
+                  value={currentData.hour}
+                  onChange={handleChange}
+                  variant="standard"
+                  sx={{ width: { xs: "35%" } }}
+                >
+                  {HHMM.map((hour) => (
+                    <MenuItem key={hour} value={hour}>
+                      {hour}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
             </Box>
           </Box>
           <Box my={1.5} sx={{ display: "flex", alignItems: "center" }}>
@@ -362,7 +388,7 @@ export default function ContactForm({ currentLanguage }: Props) {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          justifyContent: "start"
+          justifyContent: "start",
         }}
       >
         <Paper
@@ -389,7 +415,6 @@ export default function ContactForm({ currentLanguage }: Props) {
               justifyContent: "space-evenly",
             }}
           >
-            <AccountCircle sx={{ color: "action.active", mt: 1.5, mx: 1 }} />
             <Box
               sx={{
                 display: "flex",
@@ -403,7 +428,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  width: { xs: "100%", sm: "45%" },
+                  width: { xs: "100%", sm: "49%" },
                 }}
               >
                 <TextField
@@ -415,6 +440,13 @@ export default function ContactForm({ currentLanguage }: Props) {
                   variant="standard"
                   sx={{ width: "100%" }}
                   size="small"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircle />
+                      </InputAdornment>
+                    ),
+                  }}
                   required
                 />{" "}
               </Box>
@@ -423,7 +455,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  width: { xs: "100%", sm: "45%" },
+                  width: { xs: "100%", sm: "49%" },
                 }}
               >
                 <TextField
@@ -448,37 +480,33 @@ export default function ContactForm({ currentLanguage }: Props) {
               my: 1,
             }}
           >
-            <EmailIcon
-              sx={{
-                color: "action.active",
-                mt: 1.5,
-                mr: 1,
+            <TextField
+              name="host.email"
+              error={!validEmail}
+              helperText={
+                !validEmail &&
+                `${
+                  currentLanguage === "es"
+                    ? "Por favor ingresa una dirección de email válida"
+                    : "Please enter a valid email"
+                }`
+              }
+              onBlur={validateEmail}
+              required
+              label={currentLanguage === "es" ? "Correo Electrónico" : "Email"}
+              variant="standard"
+              value={currentData.host.email}
+              sx={{ width: "100%" }}
+              onChange={handleChange}
+              size="small"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailIcon />
+                  </InputAdornment>
+                ),
               }}
             />
-            <Box sx={{ display: "flex", alignItems: "center", width: "91%" }}>
-              <TextField
-                name="host.email"
-                error={!validEmail}
-                helperText={
-                  !validEmail &&
-                  `${
-                    currentLanguage === "es"
-                      ? "Por favor ingresa una dirección de email válida"
-                      : "Please enter a valid email"
-                  }`
-                }
-                onBlur={validateEmail}
-                required
-                label={
-                  currentLanguage === "es" ? "Correo Electrónico" : "Email"
-                }
-                variant="standard"
-                value={currentData.host.email}
-                sx={{ width: "100%" }}
-                onChange={handleChange}
-                size="small"
-              />
-            </Box>
           </Box>
           <Box
             sx={{
@@ -488,24 +516,25 @@ export default function ContactForm({ currentLanguage }: Props) {
               my: 1,
             }}
           >
-            <PhoneIcon sx={{ color: "action.active", mt: 1.5, mr: 1 }} />
-            <Box
-              my={1}
-              sx={{ display: "flex", alignItems: "center", width: "91%" }}
-            >
-              <TextField
-                label={currentLanguage === "es" ? "Teléfono" : "Phone"}
-                type="text"
-                multiline
-                name="host.phone"
-                value={currentData.host.phone}
-                onChange={handleChange}
-                variant="standard"
-                sx={{ width: "100%" }}
-                size="small"
-                required
-              />{" "}
-            </Box>
+            <TextField
+              label={currentLanguage === "es" ? "Teléfono" : "Phone"}
+              type="text"
+              multiline
+              name="host.phone"
+              value={currentData.host.phone}
+              onChange={handleChange}
+              variant="standard"
+              sx={{ width: "100%" }}
+              size="small"
+              required
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PhoneIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />{" "}
           </Box>
         </Paper>
         <Button
