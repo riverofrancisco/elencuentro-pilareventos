@@ -180,6 +180,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         client_lastname: `${currentData.host.lastName}`,
         client_email: `${currentData.host.email}`,
         client_phone: `${currentData.host.phone}`,
+        client_stats: `${currentData.stats}`
       })
       .then(
         (response: EmailJSResponseStatus) => {
@@ -472,7 +473,6 @@ export default function ContactForm({ currentLanguage }: Props) {
                   required
                 />{" "}
               </Box>
-
               <Box
                 sx={{
                   display: "flex",

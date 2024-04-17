@@ -8,10 +8,12 @@ import {
 } from "@mui/material/";
 import { Box } from "@mui/system";
 import IconButton from "@mui/material/IconButton";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Stack from "@mui/material/Stack";
 import EmailIcon from "@mui/icons-material/Email";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { Colours } from "../../Theme/theme";
 import LOGOLIGHT from "../../draftData/Images/LogoELEN Light.png";
@@ -19,25 +21,24 @@ import LOGO from "../../draftData/Images/LogoELEN.png";
 
 const actions = [
   {
-    icon: <LinkedInIcon />,
-    name: "LinkedIn",
-    linkto: "https://www.linkedin.com/in/rivero-francisco/",
+    icon: <InstagramIcon />,
+    name: "Instagram",
+    linkto: "https://www.instagram.com/elencuentropilareventos",
   },
   {
-    icon: <GitHubIcon />,
-    name: "GitHub",
-    linkto: "https://github.com/riverofrancisco",
+    icon: <WhatsAppIcon />,
+    name: "WhatsApp",
+    linkto: "https://wa.me/5491168205021",
   },
   {
     icon: <EmailIcon />,
     name: "Email",
-    linkto: "mailto:franciscojose.rivero.ar@gmail.com",
+    linkto: "mailto:info@elencuentropilareventos.com.ar",
   },
   {
-    icon: <CloudDownloadIcon />,
-    name: "Resume",
-    linkto:
-      "https://drive.google.com/file/d/1x4dvUctPtHYo1LjbYf54GE-swLD_xBXu/view?usp=sharing",
+    icon: <LocationOnIcon />,
+    name: "Ubicación",
+    linkto: "https://maps.app.goo.gl/tbaWYyPYYDMmF2TG9",
   },
 ];
 
@@ -58,7 +59,12 @@ const Footer: React.FC = () => {
         py={4}
         px="10%"
       >
-        <Box display="flex" sx={{ flexDirection: { xs: "column", sm: "row" } }} justifySelf="center" alignItems="center">
+        <Box
+          display="flex"
+          sx={{ flexDirection: { xs: "column", sm: "row" } }}
+          justifySelf="center"
+          alignItems="center"
+        >
           <Box
             sx={{
               display: "flex",
@@ -76,11 +82,12 @@ const Footer: React.FC = () => {
             component="a"
             href="/"
             sx={{
-              mr: {xs: "none", sm: 2},
+              fontFamily: "Lovelo, sans-serif",
+              mr: { xs: "none", sm: 2 },
               display: { xs: "flex" },
               fontWeight: { xs: 200, sm: 700 },
               letterSpacing: { sm: ".2rem" },
-              color: "inherit",
+              color: Colours.Crema,
               textDecoration: "none",
             }}
           >
