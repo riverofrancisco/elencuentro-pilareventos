@@ -43,7 +43,7 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
       sx={{
         width: { xs: "49%", sm: "33%" },
       p:0.5,
-        bgcolor: Colours.Beige2,
+        bgcolor: Colours.Crema,
         opacity: 1,
         transition: "opacity 0.3s ease-in-out",
         "&:hover": {
@@ -56,8 +56,9 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
       {/* <Badge  anchorOrigin={{ vertical: 'top', horizontal: 'right' }} badgeContent={ isAuth && <MenuOptionsSkill key={skill.id} id={skill.id} updateform={<SkillForm skill={skill} refresh={refresh} currentLanguage={currentLanguage} isEditing={true}/>}/>}> */}
 
       <Tooltip
-        title={pic.originalTitle}
-        placement="bottom-end"
+        title={pic.originalTitle
+        }
+        placement="bottom"
         onClose={handleTooltipClose}
         onOpen={handleTooltipOpen}
         open={open}
@@ -70,7 +71,7 @@ const ImageCard = ({ pic, refresh, handleOpenPicture, item }: Props) => {
             objectFit: "cover",
           }}
           src={pic.original}
-          alt={pic.originalTitle}
+          alt={pic.originalTitle[currentLanguage]}
         />
       </Tooltip>
 

@@ -8,8 +8,6 @@ import {
   Grid,
   Box,
   Autocomplete,
-  InputAdornment,
-  MenuItem,
 } from "@mui/material";
 
 //ICONS
@@ -38,27 +36,11 @@ interface Props {
   currentLanguage: string;
 }
 
-export default function ContactForm({ currentLanguage }: Props) {
+export default function PREVContactForm({ currentLanguage }: Props) {
   const defaultType = {
-    options: [
-      "Casamiento",
-      "Cumpleaños",
-      "Fiesta de 15",
-      "Bar / Bat Mitzvah",
-      "Ceremonia Egresados",
-      "Aniversario",
-      "Corporativo",
-      "Otro",
-    ],
+    options: ["Alquiler espacio"],
     getOptionLabel: (option: any) => option,
   };
-  const stats = ["Redes Sociales", "Conocidos", "Otra"];
-
-  const hours = Array.from({ length: 24 }, (_, index) => index);
-  const minutes = ["00", "15", "30", "45"];
-  const HHMM = hours.flatMap((hour) => {
-    return minutes.map((minute) => `${hour}:${minute}`);
-  });
 
   //// INPUTS
   const [currentData, setCurrentData] = useState(emptyFormContent);
@@ -70,14 +52,9 @@ export default function ContactForm({ currentLanguage }: Props) {
     setCurrentData({
       ...currentData,
       type: value as
-        | "Casamiento"
-        | "Cumpleaños"
-        | "Fiesta de 15"
-        | "Bar / Bat Mitzvah"
-        | "Ceremonia Egresados"
-        | "Aniversario"
-        | "Corporativo"
-        | "Otro",
+        | "Propuesta integral"
+        | "Alquiler espacio"
+        | "Alquiler espacio y ambientación",
     });
   };
 
@@ -146,10 +123,10 @@ export default function ContactForm({ currentLanguage }: Props) {
     ];
 
     // Verifica si todos los campos requeridos están llenos y válidos
-    const allFieldsstandard = requiredFields.every((field) => field.valid);
+    const allFieldsFilled = requiredFields.every((field) => field.valid);
 
     // Actualiza el estado de submiteable
-    setSubmiteable(allFieldsstandard);
+    setSubmiteable(allFieldsFilled);
   }
 
   useEffect(() => {
@@ -175,12 +152,10 @@ export default function ContactForm({ currentLanguage }: Props) {
         client_name: `${currentData.host.name}`,
         event_type: `${currentData.type}`,
         event_date: `${currentData.date}`,
-        event_hour: `${currentData.hour}`,
         event_guests: `${currentData.guests}`,
         client_lastname: `${currentData.host.lastName}`,
         client_email: `${currentData.host.email}`,
         client_phone: `${currentData.host.phone}`,
-        client_stats: `${currentData.stats}`
       })
       .then(
         (response: EmailJSResponseStatus) => {
@@ -218,27 +193,30 @@ export default function ContactForm({ currentLanguage }: Props) {
       sx={{
         mx: { xs: "2%", sm: "11%" },
         p: { xs: "2.5%", md: "2%" },
+        borderRadius: 3,
+        bgcolor: Colours.Gris,
       }}
     >
       <Grid
         item
         xs={12}
         md={6}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "start" }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Paper
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            p: 4,
+            p: 5,
             mb: { xs: 2, md: "none" },
             mx: { xs: "none", md: 1 },
             bgcolor: Colours.Crema,
+            borderRadius: 5,
             width: "100%",
           }}
         >
-          <Typography variant="h6" sx={{ fontFamily: "Space Mono, monospace" }}>
+          <Typography variant="h6">
             {currentLanguage === "es" ? "Sobre el Evento" : "Event Info"}
           </Typography>
           <Box
@@ -260,7 +238,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                     currentLanguage === "es" ? "Tipo de Evento" : "Event Type"
                   }
                   name="type"
-                  variant="standard"
+                  variant="outlined"
                   size="small"
                   fullWidth
                 />
@@ -280,10 +258,9 @@ export default function ContactForm({ currentLanguage }: Props) {
             <Box
               sx={{
                 display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                alignItems: { xs: "center", md: "end" },
-                width: { xs: "100%" },
-                justifyContent: { xs: "center", md: "space-between" },
+                alignItems: "center",
+                width: { xs: "100%", sm: "45%" },
+                justifyContent: { xs: "center", sm: "left" },
                 mb: { xs: 1.5, sm: 0 },
               }}
             >
@@ -297,8 +274,8 @@ export default function ContactForm({ currentLanguage }: Props) {
                 name="guests"
                 value={currentData.guests}
                 onChange={handleChange}
-                variant="standard"
-                sx={{ width: { xs: "100%", md: "30%" } }}
+                variant="outlined"
+                sx={{ width: "97%" }}
                 size="small"
                 InputProps={{
                   inputProps: {
@@ -318,50 +295,34 @@ export default function ContactForm({ currentLanguage }: Props) {
                 }
                 required
               />{" "}
-              <Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "end",
-                  justifyContent: { xs: "space-between", md: "space-evenly" },
-                  mt: { xs: 3, md: "none" },
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", sm: "right" },
+                width: "100%",
+              }}
+            >
+              <TextField
+                type="date"
+                name="date"
+                value={currentData.date}
+                onChange={handleChange}
+                variant="outlined"
+                sx={{ width: "97%" }}
+                size="small"
+                InputProps={{
+                  inputProps: {
+                    min: new Date().toISOString().split("T")[0],
+                    max: "2025-12-31",
+                  },
                 }}
-              >
-                <TextField
-                  type="date"
-                  name="date"
-                  value={currentData.date}
-                  onChange={handleChange}
-                  variant="standard"
-                  sx={{ width: { xs: "60%" } }}
-                  size="small"
-                  InputProps={{
-                    inputProps: {
-                      min: new Date().toISOString().split("T")[0],
-                      max: "2025-12-31",
-                    },
-                  }}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  required
-                />{" "}
-                <TextField
-                  select
-                  label="hh:mm"
-                  name="hour"
-                  value={currentData.hour}
-                  onChange={handleChange}
-                  variant="standard"
-                  sx={{ width: { xs: "35%" } }}
-                >
-                  {HHMM.map((hour) => (
-                    <MenuItem key={hour} value={hour}>
-                      {hour}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Box>
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                required
+              />{" "}
             </Box>
           </Box>
           <Box my={1.5} sx={{ display: "flex", alignItems: "center" }}>
@@ -375,31 +336,9 @@ export default function ContactForm({ currentLanguage }: Props) {
               variant="filled"
               sx={{ width: "100%" }}
               size="small"
-              rows={3}
+              rows={5}
+              required
             />{" "}
-          </Box>
-          <Box my={1.5} sx={{ display: "flex", alignItems: "center" }}>
-            <TextField
-              select
-              label={
-                currentLanguage === "es"
-                  ? "¿Como nos conoció?"
-                  : "How did you hear about us?"
-              }
-              name="stats"
-              value={currentData.stats}
-              onChange={handleChange}
-              variant="standard"
-              sx={{ width: "100%" }}
-              size="small"
-            >
-              {" "}
-              {stats.map((stat) => (
-                <MenuItem key={stat} value={stat}>
-                  {stat}
-                </MenuItem>
-              ))}
-            </TextField>
           </Box>
         </Paper>
       </Grid>
@@ -411,7 +350,6 @@ export default function ContactForm({ currentLanguage }: Props) {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          justifyContent: "start",
         }}
       >
         <Paper
@@ -420,13 +358,14 @@ export default function ContactForm({ currentLanguage }: Props) {
             flexDirection: "column",
             alingItems: "center",
             justifyContent: "center",
-            p: 4,
+            p: 5,
             mx: { xs: "none", md: 1 },
+            borderRadius: 5,
             width: "100%",
             bgcolor: Colours.Crema,
           }}
         >
-          <Typography variant="h6" sx={{ fontFamily: "Space Mono, monospace" }}>
+          <Typography variant="h6">
             {currentLanguage === "es"
               ? "Información de Contacto"
               : "Contact Info"}
@@ -438,6 +377,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               justifyContent: "space-evenly",
             }}
           >
+            <AccountCircle sx={{ color: "action.active", m: 1 }} />
             <Box
               sx={{
                 display: "flex",
@@ -451,7 +391,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  width: { xs: "100%", sm: "49%" },
+                  width: { xs: "100%", sm: "45%" },
                 }}
               >
                 <TextField
@@ -460,24 +400,18 @@ export default function ContactForm({ currentLanguage }: Props) {
                   name="host.name"
                   value={currentData.host.name}
                   onChange={handleChange}
-                  variant="standard"
+                  variant="filled"
                   sx={{ width: "100%" }}
                   size="small"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircle />
-                      </InputAdornment>
-                    ),
-                  }}
                   required
                 />{" "}
               </Box>
+
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  width: { xs: "100%", sm: "49%" },
+                  width: { xs: "100%", sm: "45%" },
                 }}
               >
                 <TextField
@@ -486,7 +420,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                   name="host.lastName"
                   value={currentData.host.lastName}
                   onChange={handleChange}
-                  variant="standard"
+                  variant="filled"
                   sx={{ width: "100%" }}
                   size="small"
                   required
@@ -502,33 +436,36 @@ export default function ContactForm({ currentLanguage }: Props) {
               my: 1,
             }}
           >
-            <TextField
-              name="host.email"
-              error={!validEmail}
-              helperText={
-                !validEmail &&
-                `${
-                  currentLanguage === "es"
-                    ? "Por favor ingresa una dirección de email válida"
-                    : "Please enter a valid email"
-                }`
-              }
-              onBlur={validateEmail}
-              required
-              label={currentLanguage === "es" ? "Correo Electrónico" : "Email"}
-              variant="standard"
-              value={currentData.host.email}
-              sx={{ width: "100%" }}
-              onChange={handleChange}
-              size="small"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <EmailIcon />
-                  </InputAdornment>
-                ),
+            <EmailIcon
+              sx={{
+                color: "action.active",
+                m: 1,
               }}
             />
+            <Box sx={{ display: "flex", alignItems: "center", width: "91%" }}>
+              <TextField
+                name="host.email"
+                error={!validEmail}
+                helperText={
+                  !validEmail &&
+                  `${
+                    currentLanguage === "es"
+                      ? "Por favor ingresa una dirección de email válida"
+                      : "Please enter a valid email"
+                  }`
+                }
+                onBlur={validateEmail}
+                required
+                label={
+                  currentLanguage === "es" ? "Correo Electrónico" : "Email"
+                }
+                variant="filled"
+                value={currentData.host.email}
+                sx={{ width: "100%" }}
+                onChange={handleChange}
+                size="small"
+              />
+            </Box>
           </Box>
           <Box
             sx={{
@@ -538,25 +475,24 @@ export default function ContactForm({ currentLanguage }: Props) {
               my: 1,
             }}
           >
-            <TextField
-              label={currentLanguage === "es" ? "Teléfono" : "Phone"}
-              type="text"
-              multiline
-              name="host.phone"
-              value={currentData.host.phone}
-              onChange={handleChange}
-              variant="standard"
-              sx={{ width: "100%" }}
-              size="small"
-              required
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PhoneIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />{" "}
+            <PhoneIcon sx={{ color: "action.active", m: 1 }} />
+            <Box
+              my={1}
+              sx={{ display: "flex", alignItems: "center", width: "91%" }}
+            >
+              <TextField
+                label={currentLanguage === "es" ? "Teléfono" : "Phone"}
+                type="text"
+                multiline
+                name="host.phone"
+                value={currentData.host.phone}
+                onChange={handleChange}
+                variant="filled"
+                sx={{ width: "100%" }}
+                size="small"
+                required
+              />{" "}
+            </Box>
           </Box>
         </Paper>
         <Button
@@ -564,10 +500,12 @@ export default function ContactForm({ currentLanguage }: Props) {
           disabled={!submiteable}
           variant="contained"
           color="primary"
+          endIcon={<SendIcon />}
           sx={{
             my: 1,
             width: "100%",
             alignSelf: "center",
+            borderRadius: 2,
           }}
         >
           {currentLanguage === "es" ? "Enviar Mensaje" : "Sent Message"}
