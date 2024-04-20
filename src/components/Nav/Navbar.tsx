@@ -67,7 +67,7 @@ export default function NavBar() {
 
   //// LANGUAGE INFO
   const currentLanguage = useAppSelector((state) => state.global.language);
-  const navItems = useAppSelector((state) => state.global.sections);
+  let navItems = useAppSelector((state) => state.global.sections);
   const [Items, setItems] = React.useState(itemsNav[currentLanguage]);
 
   /* const getData = async () => {
@@ -153,6 +153,9 @@ export default function NavBar() {
     };
 
   React.useEffect(() => {
+    console.log(itemsNav)
+    console.log("to")
+    console.log(navItems)
     handleItems();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -178,11 +181,11 @@ export default function NavBar() {
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            {Items.map((it: string) => {
+            {navItems && navItems.map((it: any) => {
               return (
                 <ListItem key={it} disablePadding>
                   <ListItemButton onClick={() => scrollToTextField(it)}>
-                    {it}
+                    {it[currentLanguage]}
                   </ListItemButton>
                 </ListItem>
               );
@@ -274,8 +277,8 @@ export default function NavBar() {
                 </Typography>
               </Box>
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                {Items.map((item: string) => (
-                  <Box key={item}>
+                {navItems && navItems.map((item: any) => (
+                  <Box key={item.id}>
                     {" "}
                     <Box
                       sx={{
@@ -293,29 +296,15 @@ export default function NavBar() {
                           cursor: "pointer",
                         },
                       }}
-                      onClick={() => scrollToTextField(item)}
+                      onClick={() => scrollToTextField(item[currentLanguage])}
                     >
-                      <Typography variant="subtitle1" sx={{ fontFamily: "Space Mono, monospace",}}>{item}</Typography>
+                      <Typography variant="subtitle1" sx={{ fontFamily: "Space Mono, monospace",}}>{item[currentLanguage]}</Typography>
                     </Box>{" "}
                   </Box>
                 ))}
               </Box>
               <Box display="flex">
-                {/* <IconButton
-                  color="inherit"
-                  onClick={handleToggleDarkMode}
-                  sx={{
-                    display: "flex",
-                    my: 1,
-                    p: 1,
-                  }}
-                >
-                  {isDarkMode ? (
-                    <LightModeRoundedIcon />
-                  ) : (
-                    <DarkModeRoundedIcon />
-                  )} 
-                </IconButton> */}
+            
                 <LanguageButton />
                 {isAuth ? (
                   <Box sx={{ display: { xs: "none", md: "flex" } }}>

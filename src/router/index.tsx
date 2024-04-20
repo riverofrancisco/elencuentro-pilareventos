@@ -27,7 +27,8 @@ export const AppRouter = () => {
     const sectionsData = await getSections();
     let picturesData = await getPictures();
     const orderedPicturesData = picturesData.sort((a: any, b: any) => a.index - b.index);
-    dispatch(SectionsSetter(sectionsData));
+    const orderedSectionsData = sectionsData.sort((a: any, b: any) => a.index - b.index);
+    dispatch(SectionsSetter(orderedSectionsData));
     dispatch(PicturesSetter(orderedPicturesData));
   };
 
