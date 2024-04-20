@@ -38,7 +38,7 @@ const LandingPage: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <Box
+        {/*  <Box
           sx={{
             height: "40%",
             display: { xs: "none", md: "flex" },
@@ -57,7 +57,7 @@ const LandingPage: React.FC = () => {
             }
             alt="logo"
           />
-        </Box>
+        </Box> */}
         <Box
           sx={{
             py: { sx: 0, md: 5, lg: 10 },
