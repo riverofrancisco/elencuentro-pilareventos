@@ -115,8 +115,8 @@ export default function NavBar() {
 
   ////SCROLLING WITH CLICK
   function scrollToTextField(id: string) {
-    console.log(id)
-    console.log(typeof id)
+    console.log(id);
+    console.log(typeof id);
     if (mobileOpen) setMobileOpen(false);
     const element = document.getElementById(id);
     if (element) {
@@ -153,9 +153,6 @@ export default function NavBar() {
     };
 
   React.useEffect(() => {
-    console.log(itemsNav)
-    console.log("to")
-    console.log(navItems)
     handleItems();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -198,126 +195,136 @@ export default function NavBar() {
         <React.Fragment>
           <CssBaseline />
           <ElevationScroll>
-          <AppBar
-            component="nav"
-            sx={{
-              px: "10%",
-              transition: "background-color 0.6s ease, padding 0.6s ease",
-              bgcolor: !scrolling ? "transparent" : colorNav,
-              py: {xs: !scrolling ? 1.5 : 0.5, md:  !scrolling ? 2 : 0.5} 
-            }}
-          >
-            <Toolbar
+            <AppBar
+              component="nav"
               sx={{
-                px: { md: 5 },
-                display: "flex",
-                justifyContent: "space-between",
+                px: "10%",
+                transition: "background-color 0.4s ease",
+                bgcolor: !scrolling ? "transparent" : colorNav,
+                py: { xs: 0.5, md: 0.5 },
               }}
             >
-              <Box
-                ml={0.5}
+              <Toolbar
                 sx={{
-                  display: { xs: "flex", sm: "flex", md: "none" },
-                  opacity: 0.8,
-                  transition: "0.3s ease", // Transición suave para el efecto de borde
-                  "&:hover": {
-                    cursor: "pointer",
-                    opacity: 1,
-                    transitionDelay: "0.02s",
-                  },
-                }}
-              >
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={toggleDrawer(true)}
-                  sx={{
-                    mr: 2,
-                    display: { xs: "flex", sm: "flex", md: "none" },
-                    flexGrow: 0,
-                  }}
-                >
-                  <MenuIcon />
-                </IconButton>
-                {isAuth ? (
-                  <Box py={1}>
-                    <LogoutButton />
-                  </Box>
-                ) : (
-                  <Box py={1}>
-                    <LoginForm />
-                  </Box>
-                )}
-              </Box>
-
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: { xs: "none", md: "flex" },
-                  alignItems: "center",
-                  opacity: 1,
-                
+                  px: { md: 5 },
+                  display: "flex",
+                  justifyContent: "space-between",
                 }}
               >
                 <Box
-                  mr={0.5}
+                  ml={0.5}
                   sx={{
-                    display: "flex",
+                    display: { xs: "flex", sm: "flex", md: "none" },
+                    opacity: 0.8,
+                    transition: "0.3s ease", // Transición suave para el efecto de borde
+                    "&:hover": {
+                      cursor: "pointer",
+                      opacity: 1,
+                      transitionDelay: "0.02s",
+                    },
                   }}
                 >
-                  <img
-                    width={60}
-                    src={`https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLogoELEN.png?alt=media&token=041870e7-33b9-4ccf-aae8-59fb9a821188`}
-                    alt="logo"
-                  />
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={toggleDrawer(true)}
+                    sx={{
+                      mr: 2,
+                      display: { xs: "flex", sm: "flex", md: "none" },
+                      flexGrow: 0,
+                    }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  {isAuth ? (
+                    <Box py={1}>
+                      <LogoutButton />
+                    </Box>
+                  ) : (
+                    <Box py={1}>
+                      <LoginForm />
+                    </Box>
+                  )}
                 </Box>
-                <Typography variant="h6" component="div" color="inherit" sx={{ fontFamily: "Lovelo, sans-serif",}}>
-                  El Encuentro
-                </Typography>
-              </Box>
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    display: { xs: "none", md: "flex" },
+                    alignItems: "center",
+                    opacity: 1,
+                
+                  }}
+                >
+                  <Box
+                    mr={0.5}
+                    sx={{
+                      display: "flex",
+                    }}
+                  >
+                    <img
+                      width={60}
+                      src={`https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FLogoELEN.png?alt=media&token=041870e7-33b9-4ccf-aae8-59fb9a821188`}
+                      alt="logo"
+                    />
+                  </Box>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    color="inherit"
+                    sx={{ fontFamily: "Lovelo, sans-serif" }}
+                  >
+                    El Encuentro
+                  </Typography>
+                </Box>
+                <Box sx={{ display: { xs: "none", md: "flex" } }}>
                 {navItems && navItems.map((item: any) => (
                   <Box key={item.id}>
-                    {" "}
-                    <Box
-                      sx={{
-                        py: 0.5,
-                        px: 1,
-                        color: "inherit",
-                        opacity: 0.7,
-                        borderBottom: "0px solid transparent",
-                        transition:
-                          "opacity 0.3s ease-in, border-bottom 0.3s ease-out", // Transición suave para el efecto de borde
-                        "&:hover": {
-                          opacity: 1,
-                          borderBottom: "1px solid",
-                          transitionDelay: "0.05s",
-                          cursor: "pointer",
-                        },
-                      }}
+                      {" "}
+                      <Box
+                        sx={{
+                          py: 0.5,
+                          px: 1,
+                          color: "inherit",
+                          opacity: 0.7,
+                          borderBottom: "0px solid transparent",
+                          transition:
+                            "opacity 0.3s ease-in, border-bottom 0.3s ease-out", // Transición suave para el efecto de borde
+                          "&:hover": {
+                            opacity: 1,
+                            borderBottom: "1px solid",
+                            transitionDelay: "0.05s",
+                            cursor: "pointer",
+                          },
+                        }}
                       onClick={() => scrollToTextField(item[currentLanguage])}
-                    >
-                      <Typography variant="subtitle1" sx={{ fontFamily: "Space Mono, monospace",}}>{item[currentLanguage]}</Typography>
-                    </Box>{" "}
-                  </Box>
-                ))}
-              </Box>
-              <Box display="flex">
+                      >
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ fontFamily: "Space Mono, monospace" }}
+                        >
+                          {item[currentLanguage]}
+                        </Typography>
+                      </Box>{" "}
+                    </Box>
+                  ))}
+                </Box>
+                <Box display="flex">
             
-                <LanguageButton />
-                {isAuth ? (
-                  <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                    <LogoutButton />
-                  </Box>
-                ) : (
-                  <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                    <LoginForm />
-                  </Box>
-                )}
-              </Box>
-            </Toolbar>
-          </AppBar>
+                  <LanguageButton />
+                  {isAuth ? (
+                    <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                      <LogoutButton />
+                    </Box>
+                  ) : (
+                    <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                      <LoginForm />
+                    </Box>
+                  )}
+                </Box>
+              </Toolbar>
+            </AppBar>
           </ElevationScroll>
         </React.Fragment>
       </Box>

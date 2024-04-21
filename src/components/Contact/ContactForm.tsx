@@ -24,6 +24,7 @@ import Alert from "@mui/material/Alert";
 import { emptyFormContent } from "../../interfaces/interfaces";
 import { Colours } from "../../Theme/theme";
 import { current } from "@reduxjs/toolkit";
+import { IndexKind } from "typescript";
 
 const { REACT_APP_publicKey, REACT_APP_serviceID, REACT_APP_templateID } =
   process.env;
@@ -81,8 +82,11 @@ export default function ContactForm({ currentLanguage }: Props) {
     });
   };
 
+  const [other, setOther] = React.useState("");
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+
     if (name.includes(".")) {
       const [parentProperty, childProperty] = name.split(".");
       setCurrentData((currentData: any) => ({
@@ -92,6 +96,14 @@ export default function ContactForm({ currentLanguage }: Props) {
           [childProperty]: value,
         },
       }));
+    } else if (name === "other") {
+      setOther(value);
+      if (value !== "Otra") {
+        setCurrentData((currentData: any) => ({
+          ...currentData,
+          stats: value,
+        }));
+      }
     } else {
       setCurrentData({
         ...currentData,
@@ -180,7 +192,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         client_lastname: `${currentData.host.lastName}`,
         client_email: `${currentData.host.email}`,
         client_phone: `${currentData.host.phone}`,
-        client_stats: `${currentData.stats}`
+        client_stats: `${currentData.stats}`,
       })
       .then(
         (response: EmailJSResponseStatus) => {
@@ -226,7 +238,7 @@ export default function ContactForm({ currentLanguage }: Props) {
         md={6}
         sx={{ display: "flex", justifyContent: "center", alignItems: "start" }}
       >
-        <Paper
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -238,6 +250,8 @@ export default function ContactForm({ currentLanguage }: Props) {
             width: "100%",
           }}
         >
+          {/* To have previous shadow, switch to paper */}
+
           <Typography variant="h6" sx={{ fontFamily: "Space Mono, monospace" }}>
             {currentLanguage === "es" ? "Sobre el Evento" : "Event Info"}
           </Typography>
@@ -378,7 +392,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               rows={3}
             />{" "}
           </Box>
-          <Box my={1.5} sx={{ display: "flex", alignItems: "center" }}>
+          <Box my={1.5} sx={{ display: "flex", alignItems: "end", justifyContent: "space-between" }}>
             <TextField
               select
               label={
@@ -386,22 +400,33 @@ export default function ContactForm({ currentLanguage }: Props) {
                   ? "¿Como nos conoció?"
                   : "How did you hear about us?"
               }
-              name="stats"
-              value={currentData.stats}
+              name="other"
+              value={other}
               onChange={handleChange}
               variant="standard"
-              sx={{ width: "100%" }}
+              sx={{ width: "48%" }}
               size="small"
             >
               {" "}
-              {stats.map((stat) => (
-                <MenuItem key={stat} value={stat}>
+              {stats.map((stat, index) => (
+                <MenuItem key={`${stat}${index}`} value={stat}>
                   {stat}
                 </MenuItem>
               ))}
             </TextField>
+            <TextField
+              label={other === "Otra" && currentLanguage === "es" ? "Otra" : ""}
+              disabled={other !== "Otra"}
+              name="stats"
+              value={currentData.stats}
+              onChange={handleChange}
+              variant="outlined"
+              sx={{ width: "48%" }}
+              size="small"
+            />
           </Box>
-        </Paper>
+        </Box>
+        {/* To have previous shadow, switch to paper */}
       </Grid>
       <Grid
         item
@@ -414,7 +439,7 @@ export default function ContactForm({ currentLanguage }: Props) {
           justifyContent: "start",
         }}
       >
-        <Paper
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -426,6 +451,7 @@ export default function ContactForm({ currentLanguage }: Props) {
             bgcolor: Colours.Crema,
           }}
         >
+          {/* To have previous shadow, switch to paper */}
           <Typography variant="h6" sx={{ fontFamily: "Space Mono, monospace" }}>
             {currentLanguage === "es"
               ? "Información de Contacto"
@@ -558,7 +584,8 @@ export default function ContactForm({ currentLanguage }: Props) {
               }}
             />{" "}
           </Box>
-        </Paper>
+        </Box>
+        {/* To have previous shadow, switch to paper */}
         <Button
           onClick={handleSubmit}
           disabled={!submiteable}
@@ -566,7 +593,7 @@ export default function ContactForm({ currentLanguage }: Props) {
           color="primary"
           sx={{
             my: 1,
-            width: "100%",
+            width: "90%",
             alignSelf: "center",
           }}
         >
@@ -577,9 +604,9 @@ export default function ContactForm({ currentLanguage }: Props) {
             severity="success"
             sx={{
               my: 1,
-              width: "100%",
+              width: "90%",
               alignSelf: "center",
-              borderRadius: 4,
+              borderRadius: 2,
             }}
           >{`${
             currentLanguage === "es"
