@@ -53,7 +53,7 @@ export default function ContactForm({ currentLanguage }: Props) {
     ],
     getOptionLabel: (option: any) => option,
   };
-  const stats = ["Redes Sociales", "Conocidos", "Otra"];
+  const stats = ["Redes Sociales", "casamientos.com.ar", "Conocidos", "Otra"];
 
   const hours = Array.from({ length: 24 }, (_, index) => index);
   const minutes = ["00", "15", "30", "45"];
@@ -369,7 +369,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                   variant="standard"
                   sx={{ width: { xs: "35%" } }}
                 >
-                  {HHMM.map((hour,index) => (
+                  {HHMM.map((hour, index) => (
                     <MenuItem key={`${hour}-${index}`} value={hour}>
                       {hour}
                     </MenuItem>
@@ -392,7 +392,14 @@ export default function ContactForm({ currentLanguage }: Props) {
               rows={3}
             />{" "}
           </Box>
-          <Box my={1.5} sx={{ display: "flex", alignItems: "end", justifyContent: "space-between" }}>
+          <Box
+            my={1.5}
+            sx={{
+              display: "flex",
+              alignItems: "end",
+              justifyContent: "space-between",
+            }}
+          >
             <TextField
               select
               label={
