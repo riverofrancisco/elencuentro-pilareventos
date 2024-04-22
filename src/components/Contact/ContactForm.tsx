@@ -369,8 +369,8 @@ export default function ContactForm({ currentLanguage }: Props) {
                   variant="standard"
                   sx={{ width: { xs: "35%" } }}
                 >
-                  {HHMM.map((hour) => (
-                    <MenuItem key={hour} value={hour}>
+                  {HHMM.map((hour,index) => (
+                    <MenuItem key={`${hour}-${index}`} value={hour}>
                       {hour}
                     </MenuItem>
                   ))}

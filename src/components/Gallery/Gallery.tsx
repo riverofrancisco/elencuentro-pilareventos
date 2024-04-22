@@ -98,7 +98,7 @@ export default function Gallery() {
           galleryPics.map((pic: any, index: number) => {
             return (
               <ImageCard
-                key={pic.original}
+                key={pic.id}
                 pic={pic}
                 refresh={pic.originalTitle.en}
                 item={index}
