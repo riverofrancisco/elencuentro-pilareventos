@@ -38,7 +38,7 @@ const actions = [
   {
     icon: <LocationOnIcon />,
     name: "Ubicación",
-    linkto: "https://maps.app.goo.gl/tbaWYyPYYDMmF2TG9",
+    linkto: "https://www.google.com/maps?q=-34.4127769470215,-58.9008483886719",
   },
 ];
 

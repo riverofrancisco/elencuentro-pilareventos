@@ -15,7 +15,6 @@ const LandingPage: React.FC = () => {
     <Grid
       container
       id={sectionData[0] ? sectionData[0][currentLanguage] : "Inicio"}
-      mt={12}
       position={"relative"}
       sx={{
         bgImageOpacity: 0.2,
@@ -23,7 +22,7 @@ const LandingPage: React.FC = () => {
           url('https://firebasestorage.googleapis.com/v0/b/elencuentro-pilareventos.appspot.com/o/Images%2FFOTO%20PAGINA%20PRINCIPAL.jpg?alt=media&token=bdcee44c-3390-4292-9b09-ee1eafc4f7af')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "90vh",
+        height: "100vh",
       }}
     >
       <Grid
@@ -38,7 +37,7 @@ const LandingPage: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <Box
+        {/*  <Box
           sx={{
             height: "40%",
             display: { xs: "none", md: "flex" },
@@ -57,7 +56,7 @@ const LandingPage: React.FC = () => {
             }
             alt="logo"
           />
-        </Box>
+        </Box> */}
         <Box
           sx={{
             py: { sx: 0, md: 5, lg: 10 },

@@ -16,7 +16,7 @@ export default function ElevationScroll(props: Props) {
     });
   
     return React.cloneElement(children as React.ReactElement, {
-      elevation: trigger ? 4 : 0,
+      elevation: trigger ? 0 : 0,
     });
   }
 

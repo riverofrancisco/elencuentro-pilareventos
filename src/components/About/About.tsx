@@ -33,7 +33,7 @@ export default function About() {
             fontFamily: "Lovelo, sans-serif",
             fontWeight: 600,
             letterSpacing: ".1rem",
-            fontSize:  {xs:"calc(9vw)", sm: "calc(4vw)"},
+            fontSize: { xs: "calc(9vw)", sm: "calc(4vw)" },
           }}
         >
           {sectionData[0] ? sectionData[0][currentLanguage] : "Sobre Nosotros"}
@@ -88,28 +88,26 @@ export default function About() {
           justifyContent: "center",
           alignItems: "center",
           borderRadius: "2%",
-          border: 0.5,
-          borderColor: "grey",
         }}
       >
-        <Paper
-          elevation={3}
+        {/* <Paper
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             bgcolor: Colours.Crema,
-            boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+
             borderRadius: "2%",
             height: "100%",
           }}
-        >
+        > */}
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
+              height: "100%",
               p: { xs: 2, md: 4, lg: 7 },
             }}
           >
@@ -119,12 +117,36 @@ export default function About() {
                 textAlign: "justify",
               }}
             >
-              {sectionData[0]
-                ? sectionData[0].description[currentLanguage].split('|').map((parr: any)=>{return <p>{parr}</p>})
-                : <div><p>Somos un espacio de eventos en crecimiento, con trayectoria tanto en eventos sociales como empresariales, y masivos. Nuestra mayor motivación es crear eventos únicos, y nuestro objetivo principal es brindarles la mejor atención y el servicio posible, en un contexto de paz y naturaleza.</p><p> Contamos con un espacio de 16.000 m2 disponible para crear el evento de tus sueños, con la versatilidad necesaria para realizarlo a la medida de tus deseos. El amplio espacio verde invita a crear escenas magníficas debajo de los árboles o armar las puestas con carpas a lo largo del predio. Incluso se pueden realizar ceremonias únicas entre los árboles, con los colores del atardecer.</p></div>}
+              {sectionData[0] ? (
+                sectionData[0].description[currentLanguage]
+                  .split("|")
+                  .map((parr: any) => {
+                    return <p key={parr} >{parr}</p>;
+                  })
+              ) : (
+                <div>
+                  <p>
+                    Somos un espacio de eventos en crecimiento, con trayectoria
+                    tanto en eventos sociales como empresariales, y masivos.
+                    Nuestra mayor motivación es crear eventos únicos, y nuestro
+                    objetivo principal es brindarles la mejor atención y el
+                    servicio posible, en un contexto de paz y naturaleza.
+                  </p>
+                  <p>
+                    {" "}
+                    Contamos con un espacio de 16.000 m2 disponible para crear
+                    el evento de tus sueños, con la versatilidad necesaria para
+                    realizarlo a la medida de tus deseos. El amplio espacio
+                    verde invita a crear escenas magníficas debajo de los
+                    árboles o armar las puestas con carpas a lo largo del
+                    predio. Incluso se pueden realizar ceremonias únicas entre
+                    los árboles, con los colores del atardecer.
+                  </p>
+                </div>
+              )}
             </Typography>
           </Box>
-        </Paper>
+        {/* </Paper> */}
       </Grid>
     </Grid>
   );
