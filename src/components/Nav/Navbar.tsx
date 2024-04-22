@@ -181,7 +181,7 @@ export default function NavBar() {
             {navItems && navItems.map((it: any) => {
               return (
                 <ListItem key={it.id} disablePadding>
-                  <ListItemButton onClick={() => scrollToTextField(it)}>
+                  <ListItemButton onClick={() => scrollToTextField(it[currentLanguage])}>
                     {it[currentLanguage]}
                   </ListItemButton>
                 </ListItem>
