@@ -28,7 +28,7 @@ const actions = [
   {
     icon: <WhatsAppIcon />,
     name: "WhatsApp",
-    linkto: "https://wa.me/5491168205021",
+    linkto: "https://wa.me/5491121889954",
   },
   {
     icon: <EmailIcon />,
