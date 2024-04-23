@@ -130,6 +130,36 @@ const Footer: React.FC = () => {
           })}
         </Stack>
       </Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          bgcolor: Colours.Gris,
+        }}
+      >
+        <Typography
+          gutterBottom
+          variant="caption"
+          sx={{
+            opacity: 0.2,
+            transition: "opacity 0.2s ease-in",
+            "&:hover": {
+              opacity: 0.8,
+              cursor: "pointer",
+            },
+
+            fontFamily: "Lovelo, sans-serif",
+
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+            fontSize: { md: "calc(1.5vh)" },
+            color: Colours.Negro,
+          }}
+          onClick={() => handleLink("https://frivero.com.ar/")}
+        >
+          © 2024 Developed by FREDI Services
+        </Typography>
+      </Box>
     </footer>
   );
 };
