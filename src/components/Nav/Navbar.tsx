@@ -68,7 +68,7 @@ export default function NavBar() {
   //// LANGUAGE INFO
   const currentLanguage = useAppSelector((state) => state.global.language);
   let navItems = useAppSelector((state) => state.global.sections);
-  const [Items, setItems] = React.useState(itemsNav[currentLanguage]);
+  
 
   /* const getData = async () => {
     const data = await getSections();
@@ -82,9 +82,7 @@ export default function NavBar() {
     dispatch(SectionsSetter(data));
   };
  */
-  const handleItems = () => {
-    setItems(itemsNav[currentLanguage]);
-  };
+
 
   ///
 
@@ -96,7 +94,7 @@ export default function NavBar() {
   const [section, setSection] = React.useState("");
   ////DARK MODE
   const [isDarkMode, setIsDarkMode] = React.useState(true);
-  const [colorNav, setColorNav] = React.useState(Colours.Beige);
+  const [colorNav, setColorNav] = React.useState(Colours.Blanco);
 
   const handleColor = (mode: boolean) => {
     if (mode) {
@@ -153,7 +151,6 @@ export default function NavBar() {
     };
 
   React.useEffect(() => {
-    handleItems();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [currentLanguage]);
