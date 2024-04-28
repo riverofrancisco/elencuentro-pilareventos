@@ -206,8 +206,9 @@ export default function ContactForm({ currentLanguage }: Props) {
           setShowAlert(true);
           setTimeout(() => {
             setShowAlert(false);
-          }, 3000);
+          }, 2500);
           setCurrentData(emptyFormContent);
+          setOther("")
         },
         (error: EmailJSResponseStatus) => {
           alert(
