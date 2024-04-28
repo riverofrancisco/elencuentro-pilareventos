@@ -53,7 +53,7 @@ export default function ContactForm({ currentLanguage }: Props) {
     ],
     getOptionLabel: (option: any) => option,
   };
-  const stats = ["Redes Sociales", "casamientos.com.ar", "Conocidos", "Otra"];
+  const stats = ["Redes Sociales", "casamientos.com.ar","Por proveedor" , "Conocidos", "Otra"];
 
   const hours = Array.from({ length: 24 }, (_, index) => index);
   const minutes = ["00", "15", "30", "45"];
