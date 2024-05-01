@@ -1,25 +1,40 @@
-import * as React from "react";
+import React, { useState } from "react";
+import {
+  APIProvider,
+  Map,
+  Marker,
+  Pin,
+  InfoWindow,
+} from "@vis.gl/react-google-maps";
 import { Box } from "@mui/material";
+import { Colours } from "../../Theme/theme";
 
-const MapLocation = () => {
+const { REACT_APP_MAPS_API_KEY } = process.env;
+
+const MyMap = () => {
+  const position = { lat: -34.412869, lng: -58.9007892 };
+
   return (
-    <Box
-      sx={{
-        width: "70%",
-      }}
-    >
-      <img
-        style={{
+    <APIProvider apiKey={REACT_APP_MAPS_API_KEY ? REACT_APP_MAPS_API_KEY : ""}>
+      <Box
+        sx={{
           width: "100%",
           height: "100%",
-          borderRadius: "3%",
-          objectFit: "cover",
+          display: "flex",
+          my: 3,
+          boxShadow: 3,
         }}
-        src="https://css-tianguis.com/wp-content/uploads/2020/03/google-maps-links.png"
-        alt="location"
-      />
-    </Box>
+      >
+        <Map
+          style={{ width: "100vw", height: "50vh" }}
+          center={position}
+          defaultZoom={15}
+        >
+          <Marker position={position} />
+        </Map>
+      </Box>
+    </APIProvider>
   );
 };
 
-export default MapLocation;
+export default MyMap;

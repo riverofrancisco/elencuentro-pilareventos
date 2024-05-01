@@ -18,6 +18,7 @@ import { getSections } from "../middlewares/sections/crud";
 import { getPictures } from "../middlewares/pictures/crud";
 import { PicturesSetter, SectionsSetter } from "../redux/elencuentro/actions";
 import FormComponent from "../components/DEV/PictureCreationForm";
+import MyMap from "../components/Contact/Maps";
 
 export const AppRouter = () => {
   const dispatch = useAppDispatch();
@@ -48,6 +49,7 @@ export const AppRouter = () => {
       <ContactPage />
       <About />
       <Gallery />
+      <InfoPage />
       <Footer />
     </div>
   );

@@ -206,8 +206,9 @@ export default function ContactForm({ currentLanguage }: Props) {
           setShowAlert(true);
           setTimeout(() => {
             setShowAlert(false);
-          }, 3000);
+          }, 2500);
           setCurrentData(emptyFormContent);
+          setOther("")
         },
         (error: EmailJSResponseStatus) => {
           alert(
@@ -469,6 +470,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-evenly",
+              py: 1
             }}
           >
             <Box
@@ -511,6 +513,7 @@ export default function ContactForm({ currentLanguage }: Props) {
                   display: "flex",
                   alignItems: "center",
                   width: { xs: "100%", sm: "49%" },
+                  
                 }}
               >
                 <TextField
@@ -532,7 +535,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-evenly",
-              my: 1,
+              my: 2,
             }}
           >
             <TextField
@@ -568,7 +571,7 @@ export default function ContactForm({ currentLanguage }: Props) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-evenly",
-              my: 1,
+              my: 2,
             }}
           >
             <TextField

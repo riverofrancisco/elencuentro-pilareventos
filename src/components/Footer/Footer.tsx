@@ -142,7 +142,7 @@ const Footer: React.FC = () => {
           gutterBottom
           variant="caption"
           sx={{
-            opacity: 0.2,
+            opacity: 0.3,
             transition: "opacity 0.2s ease-in",
             "&:hover": {
               opacity: 0.8,
