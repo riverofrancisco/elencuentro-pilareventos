@@ -1,11 +1,8 @@
 import * as React from "react";
-
 import { AppRouter } from "./router";
 import { BrowserRouter } from "react-router-dom";
-
-import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useAppSelector } from "./hooks/hooksRedux";
-
 import { getDesignTokens } from "./Theme/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 
