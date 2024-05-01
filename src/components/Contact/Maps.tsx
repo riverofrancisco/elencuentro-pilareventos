@@ -12,7 +12,7 @@ import { Colours } from "../../Theme/theme";
 const { REACT_APP_MAPS_API_KEY } = process.env;
 
 const MyMap = () => {
-  const position = { lat: -34.4127769470215, lng: -58.9034233 };
+  const position = { lat: -34.412869, lng: -58.9007892 };
 
   return (
     <APIProvider apiKey={REACT_APP_MAPS_API_KEY ? REACT_APP_MAPS_API_KEY : ""}>
