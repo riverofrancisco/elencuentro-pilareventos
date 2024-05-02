@@ -110,7 +110,7 @@ const LoginForm: React.FC = () => {
       console.log({ Error: error });
     }
     handleClose();
-    console.log(currentData);
+   //console.log(currentData);
   };
 
   React.useEffect(() => {

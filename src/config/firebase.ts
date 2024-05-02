@@ -27,8 +27,8 @@ const {
 
   }; 
 
-  console.log("API Key:", process.env.REACT_APP_API_KEY);
-  console.log("Project ID:", process.env.REACT_APP_PROJECT_ID);
+  //console.log("API Key:", process.env.REACT_APP_API_KEY);
+  //console.log("Project ID:", process.env.REACT_APP_PROJECT_ID);
   
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);

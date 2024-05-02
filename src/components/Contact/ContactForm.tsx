@@ -178,7 +178,7 @@ export default function ContactForm({ currentLanguage }: Props) {
   emailjs.init(`${REACT_APP_publicKey}`);
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(currentData);
+    console.log(`Submiting Data...`);
     event.preventDefault();
 
     emailjs

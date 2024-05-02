@@ -37,7 +37,7 @@ export const AppRouter = () => {
   };
 
   useEffect(() => {
-    getAllData().then(() => console.log(RDXsections));
+    getAllData().then(() => console.log("Sections Loaded OK!"));
   }, []);
 
   return (
