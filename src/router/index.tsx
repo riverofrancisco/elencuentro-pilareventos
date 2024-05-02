@@ -10,7 +10,6 @@ import Gallery from "../components/Gallery/Gallery";
 import LandingPage from "../components/Landing/Title";
 import Footer from "../components/Footer/Footer";
 
-
 import InfoPage from "../components/Contact/InfoPage";
 import InteractiveGallery from "../components/Gallery/GalleryReact";
 import { useAppDispatch, useAppSelector } from "../hooks/hooksRedux";
@@ -27,16 +26,18 @@ export const AppRouter = () => {
   const getAllData = async () => {
     const sectionsData = await getSections();
     let picturesData = await getPictures();
-    const orderedPicturesData = picturesData.sort((a: any, b: any) => a.index - b.index);
-    const orderedSectionsData = sectionsData.sort((a: any, b: any) => a.index - b.index);
+    const orderedPicturesData = picturesData.sort(
+      (a: any, b: any) => a.index - b.index
+    );
+    const orderedSectionsData = sectionsData.sort(
+      (a: any, b: any) => a.index - b.index
+    );
     dispatch(SectionsSetter(orderedSectionsData));
     dispatch(PicturesSetter(orderedPicturesData));
   };
 
   useEffect(() => {
-    getAllData().then(() =>
-      console.log(RDXsections)
-    );
+    getAllData().then(() => console.log(RDXsections));
   }, []);
 
   return (
@@ -44,7 +45,7 @@ export const AppRouter = () => {
       <NavBar />
       <Routes>
         <Route path={`/`} element={<LandingPage />} />
-        <Route path={`/devv`} element={<FormComponent />}/>
+        {/* <Route path={`/devv`} element={<FormComponent />}/> */}
       </Routes>
       <ContactPage />
       <About />
