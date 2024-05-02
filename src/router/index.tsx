@@ -49,7 +49,7 @@ export const AppRouter = () => {
       <ContactPage />
       <About />
       <Gallery />
-      {/* <InfoPage /> */}
+      <InfoPage />
       <Footer />
     </div>
   );
