@@ -44,14 +44,14 @@ export default function Gallery() {
 
   const handleOpenPicture = (index: number) => {
     setSelected(index);
-    console.log(`Selected item: ${selectedItem}`);
-    console.log(index);
+    //console.log(`Selected item: ${selectedItem}`);
+    //console.log(index);
     setOpenPicture(true);
   };
 
   React.useEffect(() => {
-    console.log(galleryPics);
-    console.log(sectionData[0]);
+   console.log("Loading Pictures..");
+   // console.log(sectionData[0]);
   }, [currentLanguage]);
 
   return (

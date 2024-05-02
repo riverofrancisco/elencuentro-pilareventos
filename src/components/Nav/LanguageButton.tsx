@@ -10,7 +10,7 @@ const LanguageButton: React.FC = () => {
 
   const handleLanguage = () => {
     dispatch(LanguageSwitcher());
-    console.log(currentLanguage);
+    //console.log(currentLanguage);
     setIsEnglish(!isEnglish);
 
     // Lógica para cambiar el idioma aquí

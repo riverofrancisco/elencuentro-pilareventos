@@ -106,15 +106,15 @@ export default function NavBar() {
 
   const handleToggleDarkMode = () => {
     dispatch(ModeSwitcher());
-    console.log(currentMode);
+   // console.log(currentMode);
     handleColor(isDarkMode);
     setIsDarkMode(!isDarkMode);
   };
 
   ////SCROLLING WITH CLICK
   function scrollToTextField(id: string) {
-    console.log(id);
-    console.log(typeof id);
+   // console.log(id);
+   // console.log(typeof id);
     if (mobileOpen) setMobileOpen(false);
     const element = document.getElementById(id);
     if (element) {
