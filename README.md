@@ -1,5 +1,6 @@
 # El Encuentro
 Web App para [El Encuentro Pilar Eventos](https://elencuentropilareventos.com.ar)
+
 ---
 
 ### Inicialización de la Aplicación
