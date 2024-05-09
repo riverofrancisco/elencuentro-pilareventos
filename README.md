@@ -2,7 +2,7 @@
 Web App para [El Encuentro Pilar Eventos](https://elencuentropilareventos.com.ar)
 ---
 
-## Inicialización de la Aplicación
+### Inicialización de la Aplicación
 
 Para comenzar a trabajar con esta aplicación, sigue los siguientes pasos:
 
