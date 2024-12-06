@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
                   sx={{
                     opacity: 0.5,
                     borderBottom: "0px solid transparent",
-                    transition: "opacity 0.3s ease-in", // Transición suave para el efecto de borde
+                    transition: "opacity 0.3s ease-in",
                     "&:hover": {
                       opacity: 1,
 
@@ -157,7 +157,7 @@ const Footer: React.FC = () => {
           }}
           onClick={() => handleLink("https://frivero.com.ar/")}
         >
-          © 2024 Developed by FREDI Services
+          ©2024 Developed by FREDI
         </Typography>
       </Box>
     </footer>
