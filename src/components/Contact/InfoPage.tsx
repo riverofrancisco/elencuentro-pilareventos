@@ -1,9 +1,7 @@
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import * as React from "react";
 import { useAppSelector } from "../../hooks/hooksRedux";
-import ContactForm from "./ContactForm";
-import ContactInfo from "./ContactInfo";
-import MapLocation from "./Maps";
+
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -75,18 +73,20 @@ export default function InfoPage() {
             width: "100%",
             alignSelf: "start",
 
-            my: 8,
+            my: { xs: 0, md: 8, lg: 12 },
             pt: { xs: 0, md: 2 },
             pl: { xs: 0, md: 3 },
           }}
         >
           <Typography variant="h5" gutterBottom mb={3}>
-           {currentLanguage === "es" ? '¿Donde nos encontras?' : '¿Where to find us?'}
+            {currentLanguage === "es"
+              ? "¿Donde nos encontras?"
+              : "¿Where to find us?"}
           </Typography>
 
           {actions.map((action, index) => {
             return (
-              <Box key={action.description} display="flex"  p={0.5}>
+              <Box key={action.description} display="flex" p={0.5}>
                 <Box
                   sx={{
                     "&:hover": {

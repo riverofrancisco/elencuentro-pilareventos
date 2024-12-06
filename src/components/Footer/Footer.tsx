@@ -1,23 +1,18 @@
 import React from "react";
 import {
   Typography,
-  Link,
-  Button,
-  ListItemIcon,
   Tooltip,
 } from "@mui/material/";
 import { Box } from "@mui/system";
 import IconButton from "@mui/material/IconButton";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
 import Stack from "@mui/material/Stack";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { Colours } from "../../Theme/theme";
-import LOGOLIGHT from "../../draftData/Images/LogoELEN Light.png";
-import LOGO from "../../draftData/Images/LogoELEN.png";
+
 
 const actions = [
   {

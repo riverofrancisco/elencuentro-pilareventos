@@ -9,7 +9,7 @@ return (
     sx={{
       position: "relative",
       width: "100%",
-      height: "100%",
+      height: {xs:"300px", md:"100%"},
       m: 3,
       boxShadow: 3,
     }}
