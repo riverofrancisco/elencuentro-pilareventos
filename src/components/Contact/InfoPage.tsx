@@ -75,13 +75,13 @@ export default function InfoPage() {
             width: "100%",
             alignSelf: "start",
 
-            my: 3,
+            my: 8,
             pt: { xs: 0, md: 2 },
             pl: { xs: 0, md: 3 },
           }}
         >
           <Typography variant="h5" gutterBottom mb={3}>
-           {currentLanguage == "es" ? '¿Donde nos encontras?' : '¿Where to find us?'}
+           {currentLanguage === "es" ? '¿Donde nos encontras?' : '¿Where to find us?'}
           </Typography>
 
           {actions.map((action, index) => {
